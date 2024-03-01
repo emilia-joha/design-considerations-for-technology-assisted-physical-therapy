@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="chartContainer">
         <canvas id="patientHistoryChart">
         </canvas>
     </div>
@@ -33,13 +33,19 @@ export default {
                 labels: data.map(row => row.date)
                 },
                 options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                    display: false
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                        display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
                     }
-                },
-                
                 }
             }
             this.PatientHistory = new Chart(ctx, config)
@@ -84,3 +90,8 @@ export default {
     }
 }
 </script>
+<style>
+    .chartContainer {
+        max-width: 800px;
+    }
+</style>
