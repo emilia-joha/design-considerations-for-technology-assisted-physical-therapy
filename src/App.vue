@@ -15,6 +15,9 @@
 body {
   margin: 0;
 }
+#app {
+  margin:auto;
+}
 header {
   background-color: black;
   color: white;
@@ -30,4 +33,5 @@ a{
 .container {
   background-color: white;
 }
+
 </style>

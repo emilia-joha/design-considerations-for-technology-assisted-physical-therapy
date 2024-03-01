@@ -7,6 +7,7 @@
 
 <script>
 import { Chart } from 'chart.js/auto'
+import { getRelativePosition } from 'chart.js/helpers';
 import patientExercises from '@/data/exerciseData.json'
 
 export default {
@@ -22,22 +23,35 @@ export default {
         historyChart (){
             const ctx = document.getElementById('patientHistoryChart')
             const data = this.getAverageExercise();
+            
 
-            const config = {
+            const chart = new Chart(ctx, {
                 type: 'line',
                 data: {
-                datasets: [
+                    datasets: [
                     {
-                    data: data.map(row => row.step),
+                        borderColor: data.map(row => row.color),
+                        backgroundColor: data.map(row => row.color),
+                        data: data.map(row => row.step),
+                        hoverRadius: "10",
+                        showLine: false,
+                        radius: "10",
                     }],
-                labels: data.map(row => row.date)
+                    labels: data.map(row => row.date)
                 },
                 options: {
+                    onClick: (e) => {
+                        const canvasPosition = getRelativePosition(e);
+
+                        // Substitute the appropriate scale IDs
+                        const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+                        this.changeView(dataX, data) 
+                    },
                     responsive: true,
                     plugins: {
                         legend: {
-                        display: false
-                        }
+                            display: false
+                        },
                     },
                     scales: {
                         y: {
@@ -47,10 +61,8 @@ export default {
                         }
                     }
                 }
-            }
-            this.PatientHistory = new Chart(ctx, config)
-    
-        },
+            });
+        }, 
         getAverageExercise(){
             let exerciseList = []
             for (const key in this.patientExercises[0].PatientData){
@@ -71,21 +83,30 @@ export default {
                 }
 
                 let steps = 0;
+                let color = ""
                 // There is 9 key joint in the exerciseData file
                 if(red > 3){
                     steps = 1
+                    color = "#FF003D"
                 } else if (yellow >= 4 && yellow <=6){
                     steps = 2
+                    color = "#FFE601"
                 }else {
                     steps = 3
+                    color = "#BAD900"
                 }
 
                 exerciseList.push({
                     date: this.patientExercises[0].PatientData[key].Date,
-                    step: steps
+                    step: steps,
+                    color: color
                  })
             }
             return exerciseList
+        },
+        changeView(dataX, data){
+            const newData = data.map(row => row.date)
+            const date = newData[dataX]
         }
     }
 }
@@ -93,5 +114,7 @@ export default {
 <style>
     .chartContainer {
         max-width: 800px;
+        margin: auto;
+        padding: 50px;
     }
 </style>

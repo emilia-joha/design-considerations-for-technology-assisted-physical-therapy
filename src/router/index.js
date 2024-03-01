@@ -1,10 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 import History from "@/views/PatientHistory.vue";
+import Chart from "@/components/Chart.vue";
 import Patient from "@/views/Patient.vue";
 import RecordVideo from "@/views/RecordVideo.vue";
 
 const routes = [
-  { path: "/PatientHistory", name: "Patient History", component: History },
+  {
+    path: "/PatientHistory",
+    name: "Patient History",
+    component: History,
+    Chart,
+  },
   { path: "/Patient", name: "Patient", component: Patient },
   { path: "/RecordVideo", name: "Record Video", component: RecordVideo },
 ];
