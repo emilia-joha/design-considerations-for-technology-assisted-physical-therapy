@@ -1,5 +1,11 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-  </div>
+<div>{{ $route.params.date }}</div>
 </template>
+<script>
+
+export default {
+  components: {
+      
+  }
+}
+</script>

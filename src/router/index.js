@@ -7,12 +7,10 @@ import RecordVideo from "@/views/RecordVideo.vue";
 const routes = [
   {
     path: "/PatientHistory",
-    name: "Patient History",
-    component: History,
-    Chart,
+    components: { default: History, Chart },
   },
-  { path: "/Patient", name: "Patient", component: Patient },
-  { path: "/RecordVideo", name: "Record Video", component: RecordVideo },
+  { path: "/Patient/:date", component: Patient },
+  { path: "/RecordVideo", component: RecordVideo },
 ];
 
 const router = createRouter({

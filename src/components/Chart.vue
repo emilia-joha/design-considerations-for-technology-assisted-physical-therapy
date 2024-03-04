@@ -1,7 +1,9 @@
 <template>
     <div class="chartContainer">
+        <button id="backwardInTime"><</button>
         <canvas id="patientHistoryChart">
         </canvas>
+        <button id="forwardInTime">></button>
     </div>
 </template>
 
@@ -47,10 +49,16 @@ export default {
                         const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
                         this.changeView(dataX, data) 
                     },
+                    onHover: (event, chartElement) => {
+                        event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+                    },
                     responsive: true,
                     plugins: {
                         legend: {
                             display: false
+                        },
+                        tooltip: {
+                        enabled: false,
                         },
                     },
                     scales: {
@@ -64,14 +72,19 @@ export default {
             });
         }, 
         getAverageExercise(){
-            let exerciseList = []
-            for (const key in this.patientExercises[0].PatientData){
+            let newExerciseList = []
+            let exerciseObj = this.patientExercises[0].PatientData
+            const listLength =  Object.keys(exerciseObj).length
+
+            exerciseObj = Object.entries(exerciseObj).slice(listLength -5, listLength ).map(entry => entry[1]);
+            console.log(exerciseObj)
+            for (const key in exerciseObj){
                 let red = 0;
                 let yellow = 0;
                 let green = 0;
 
-                for (const joint in this.patientExercises[0].PatientData[key].Data){
-                    let jointValue = this.patientExercises[0].PatientData[key].Data[joint]
+                for (const joint in exerciseObj[key].Data){
+                    let jointValue = exerciseObj[key].Data[joint]
 
                     if(jointValue == "Red"){
                         red ++
@@ -96,25 +109,35 @@ export default {
                     color = "#BAD900"
                 }
 
-                exerciseList.push({
-                    date: this.patientExercises[0].PatientData[key].Date,
+                newExerciseList.push({
+                    date: exerciseObj[key].Date,
                     step: steps,
                     color: color
                  })
             }
-            return exerciseList
+            return newExerciseList
         },
         changeView(dataX, data){
             const newData = data.map(row => row.date)
             const date = newData[dataX]
+            console.log(date)
+            this.$router.push(`/Patient/${date}`)
         }
     }
 }
 </script>
 <style>
     .chartContainer {
-        max-width: 800px;
-        margin: auto;
         padding: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #backwardInTime, #forwardInTime{
+        font-size: 40px;
+        background-color: inherit;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
     }
 </style>
