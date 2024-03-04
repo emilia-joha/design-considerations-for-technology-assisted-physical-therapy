@@ -1,7 +1,6 @@
 <template>
   <header>
     <router-link to="/PatientHistory">Chart</router-link>
-    <router-link to="/Patient">Patient</router-link>
     <router-link to="/RecordVideo">Record Video</router-link>
   </header>
   <RouterView></RouterView>
