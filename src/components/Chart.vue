@@ -1,9 +1,8 @@
 <template>
     <div class="chartContainer">
-        <button id="backwardInTime"><</button>
-        <canvas id="patientHistoryChart">
-        </canvas>
-        <button id="forwardInTime">></button>
+        <button id="backwardInTime" @click="handleBackward()"><</button>
+        <canvas id="patientHistoryChart"></canvas>
+        <button id="forwardInTime" @click="handleForward()" >></button>
     </div>
 </template>
 
@@ -14,20 +13,39 @@ import patientExercises from '@/data/exerciseData.json'
 
 export default {
     mounted (){
-        this.historyChart()
+        
+        this.historyChart();
     },
     data(){
         return {
-            patientExercises
+            patientExercises,
+            index: 0
         }
     },
     methods: {
+        handleForward(){
+            if(this.index > 0){
+                this.index--;
+                this.patientHistoryChart.destroy();
+                this.historyChart();
+            }
+            
+        },
+        handleBackward(){
+            const listLength =  Object.keys(this.patientExercises[0].PatientData).length;
+            if(this.index < listLength -5) {
+                this.index++;
+                this.patientHistoryChart.destroy();
+                this.historyChart();
+                console.log(this.index)
+            } 
+        },
         historyChart (){
             const ctx = document.getElementById('patientHistoryChart')
             const data = this.getAverageExercise();
             
 
-            const chart = new Chart(ctx, {
+           this.patientHistoryChart = new Chart(ctx, {
                 type: 'line',
                 data: {
                     datasets: [
@@ -46,7 +64,7 @@ export default {
                         const canvasPosition = getRelativePosition(e);
 
                         // Substitute the appropriate scale IDs
-                        const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+                        const dataX = (this.patientHistoryChart).scales.x.getValueForPixel(canvasPosition.x);
                         this.changeView(dataX, data) 
                     },
                     onHover: (event, chartElement) => {
@@ -65,26 +83,27 @@ export default {
                         y: {
                             ticks: {
                                 stepSize: 1
-                            }
+                            },
+                            min: 0,
                         }
                     }
                 }
             });
         }, 
         getAverageExercise(){
-            let newExerciseList = []
-            let exerciseObj = this.patientExercises[0].PatientData
-            const listLength =  Object.keys(exerciseObj).length
+            let newExerciseList = [];
+            let exerciseObj = this.patientExercises[0].PatientData;
 
-            exerciseObj = Object.entries(exerciseObj).slice(listLength -5, listLength ).map(entry => entry[1]);
-            console.log(exerciseObj)
-            for (const key in exerciseObj){
+            const exerciseList = Object.entries(exerciseObj).slice().map(entry => entry[1]);
+            const exerciseSplitList = exerciseList.reverse().slice(this.index, this.index + 5);
+            
+            for (const key in exerciseSplitList){
                 let red = 0;
                 let yellow = 0;
                 let green = 0;
 
-                for (const joint in exerciseObj[key].Data){
-                    let jointValue = exerciseObj[key].Data[joint]
+                for (const joint in exerciseSplitList[key].Data){
+                    let jointValue = exerciseSplitList[key].Data[joint]
 
                     if(jointValue == "Red"){
                         red ++
@@ -110,12 +129,13 @@ export default {
                 }
 
                 newExerciseList.push({
-                    date: exerciseObj[key].Date,
+                    date: exerciseSplitList[key].Date,
                     step: steps,
                     color: color
                  })
             }
-            return newExerciseList
+            
+            return newExerciseList.reverse()
         },
         changeView(dataX, data){
             const newData = data.map(row => row.date)
