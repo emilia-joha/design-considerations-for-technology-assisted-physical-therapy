@@ -13,7 +13,6 @@ import patientExercises from '@/data/exerciseData.json'
 
 export default {
     mounted (){
-        
         this.historyChart();
     },
     data(){
@@ -140,8 +139,7 @@ export default {
         changeView(dataX, data){
             const newData = data.map(row => row.date)
             const date = newData[dataX]
-            console.log(date)
-            this.$router.push(`/Patient/${date}`)
+            this.$router.push(`/Patient/${this.$route.params.id}/${date}`)
         }
     }
 }
@@ -152,6 +150,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        box-sizing: border-box;
     }
     #backwardInTime, #forwardInTime{
         font-size: 40px;

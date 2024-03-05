@@ -6,11 +6,11 @@ import RecordVideo from "@/views/RecordVideo.vue";
 
 const routes = [
   {
-    path: "/PatientHistory",
+    path: "/PatientHistory/:id",
     components: { default: History, Chart },
   },
-  { path: "/Patient/:date", component: Patient },
-  { path: "/RecordVideo", component: RecordVideo },
+  { path: "/Patient/:id/:date", component: Patient },
+  { path: "/RecordVideo/:id", component: RecordVideo },
 ];
 
 const router = createRouter({

@@ -1,13 +1,20 @@
 <template>
   <header>
-    <router-link to="/PatientHistory">Chart</router-link>
-    <router-link to="/RecordVideo">Record Video</router-link>
+    <router-link :to="`/PatientHistory/${this.id}`">Chart</router-link>
   </header>
   <RouterView></RouterView>
 </template>
 
-<script setup>
+<script>
+import patient from '@/data/patientInformation.json'
 
+export default {
+    data(){
+        return {
+            id: patient[0].ID
+        }
+    },
+  }
 </script>
 
 <style>
