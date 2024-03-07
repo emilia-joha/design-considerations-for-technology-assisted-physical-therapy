@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         changeView(){
-            this.$router.push(`/RecordVideo/${id}`)
+            this.$router.push(`/RecordVideo/${this.id}`)
         }
     }
 }

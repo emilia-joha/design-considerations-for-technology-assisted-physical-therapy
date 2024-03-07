@@ -94,7 +94,8 @@ export default {
                             ticks: {
                                 stepSize: 1
                             },
-                            min: 0,
+                            suggestedMin: 1,
+                            suggestedMax: 3
                         }
                     }
                 }

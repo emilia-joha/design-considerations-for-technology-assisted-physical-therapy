@@ -1,5 +1,6 @@
 <template>
   <PatientInfo v-bind:id="id"/>
+  <Video/>
 </template>
 <script>
 import PatientInfo from "@/components/PatientInfo.vue"
