@@ -15,11 +15,11 @@ export default {
     props: ['id'],
     mounted (){
         this.fetchExerciseData();
-        this.historyChart();
+        
     },
     data(){
         return {
-            patientExercises,
+            patientExercises: [],
             index: 0
         }
     },
@@ -28,6 +28,7 @@ export default {
            try {
             const data = await api.getExerciseSessions(this.id);
             this.patientExercises = data;
+            this.historyChart();
            }
            catch (err){
 
@@ -42,12 +43,11 @@ export default {
             
         },
         handleBackward(){
-            const listLength =  Object.keys(this.patientExercises[0].PatientData).length;
+            const listLength =  this.patientExercises.length;
             if(this.index < listLength -5) {
                 this.index++;
                 this.patientHistoryChart.destroy();
                 this.historyChart();
-                console.log(this.index)
             } 
         },
         historyChart (){
@@ -101,54 +101,40 @@ export default {
             });
         }, 
         getAverageExercise(){
-            let newExerciseList = [];
-            
-            let exerciseObj = this.patientExercises;
-            console.log(exerciseObj)
+            const newExerciseList = [];
 
-            const exerciseList = Object.entries(exerciseObj).slice().map(entry => entry[1]);
-            const exerciseSplitList = exerciseList.reverse().slice(this.index, this.index + 5);
-            
-            for (const key in exerciseSplitList){
-                let red = 0;
-                let yellow = 0;
-                let green = 0;
+            for (let i = 0; i < this.patientExercises.length; i++){
+                const exercises = this.patientExercises[i].exercises;
 
-                for (const joint in exerciseSplitList[key].Data){
-                    let jointValue = exerciseSplitList[key].Data[joint]
+                for(const exercise of exercises){
+                    const performance = exercise.performanceMetrics.color;
+                    const startTime = exercise.startTimestamp.slice(0, 10);
 
-                    if(jointValue == "Red"){
-                        red ++
-                    }else if(jointValue = "Yellow"){
-                        yellow ++
-                    }else {
-                        green ++
+                    let color = "";
+                    let steps = 0;
+                    if (performance == 'red'){
+                        color = "#FF003D";
+                        steps = 1;
+                    }else if (performance == 'yellow'){
+                        color = "#FFE601";
+                        steps = 2;
+                    }else if (performance == 'green'){
+                        color = "#BAD900";
+                        steps = 3;
                     }
-                }
 
-                let steps = 0;
-                let color = ""
-                // There is 9 key joint in the exerciseData file
-                if(red > 3){
-                    steps = 1
-                    color = "#FF003D"
-                } else if (yellow >= 4 && yellow <=6){
-                    steps = 2
-                    color = "#FFE601"
-                }else {
-                    steps = 3
-                    color = "#BAD900"
-                }
-
-                newExerciseList.push({
-                    date: exerciseSplitList[key].Date,
-                    step: steps,
-                    color: color
-                 })
+                    newExerciseList.push({
+                        date : startTime,
+                        step : steps,
+                        color : color
+                    })
+                }   
             }
+            let exerciseSplitList = newExerciseList.reverse().slice(this.index, this.index + 5);
             
-            return newExerciseList.reverse()
+            return exerciseSplitList.reverse()
         },
+        
         changeView(dataX, data){
             const newData = data.map(row => row.date)
             const date = newData[dataX]

@@ -22,21 +22,21 @@ export default {
   /**
    * Gets all exercise sessions for one patient
    * @param {!string} patientId
-   * @returns {<ExerciseSession>}
+   * @returns {Promise<ExerciseSession>}
    */
   async getExerciseSessions(patientId) {
     return [
       {
         id: "session1",
         patientId: "1",
-        startTimestamp: "2023-12-12T12:00:00",
-        endTimestamp: "2023-12-12T12:30:00",
+        startTimestamp: "2023-12-01T12:00:00",
+        endTimestamp: "2023-12-01T12:30:00",
         exercises: [
           {
             id: "ex1",
             patientId: "1",
-            startTimestamp: "2023-12-12T12:00:00",
-            endTimestamp: "2023-12-12T12:30:00",
+            startTimestamp: "2023-12-01T12:00:00",
+            endTimestamp: "2023-12-01T12:30:00",
             type: "singleLeggedSquat",
             videoId: "video1",
             notes: "well done!",
@@ -87,19 +87,425 @@ export default {
       {
         id: "session2",
         patientId: "1",
-        startTimestamp: "2023-12-21T12:00:00",
-        endTimestamp: "2023-12-21T12:30:00",
+        startTimestamp: "2023-12-02T12:00:00",
+        endTimestamp: "2023-12-02T12:30:00",
         exercises: [
           {
             id: "ex2",
             patientId: "1",
-            startTimestamp: "2023-12-21T12:00:00",
-            endTimestamp: "2023-12-21T12:30:00",
+            startTimestamp: "2023-12-02T12:00:00",
+            endTimestamp: "2023-12-02T12:30:00",
             type: "singleLeggedSquat",
             videoId: "video2",
             notes: "patient had an issue",
             performanceMetrics: {
               color: "red",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session3",
+        patientId: "1",
+        startTimestamp: "2023-12-03T12:00:00",
+        endTimestamp: "2023-12-03T12:30:00",
+        exercises: [
+          {
+            id: "ex3",
+            patientId: "1",
+            startTimestamp: "2023-12-03T12:00:00",
+            endTimestamp: "2023-12-03T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "red",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session4",
+        patientId: "1",
+        startTimestamp: "2023-12-04T12:00:00",
+        endTimestamp: "2023-12-04T12:30:00",
+        exercises: [
+          {
+            id: "ex4",
+            patientId: "1",
+            startTimestamp: "2023-12-04T12:00:00",
+            endTimestamp: "2023-12-04T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "red",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session5",
+        patientId: "1",
+        startTimestamp: "2023-12-05T12:00:00",
+        endTimestamp: "2023-12-05T12:30:00",
+        exercises: [
+          {
+            id: "ex5",
+            patientId: "1",
+            startTimestamp: "2023-12-05T12:00:00",
+            endTimestamp: "2023-12-05T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "yellow",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session6",
+        patientId: "1",
+        startTimestamp: "2023-12-06T12:00:00",
+        endTimestamp: "2023-12-06T12:30:00",
+        exercises: [
+          {
+            id: "ex6",
+            patientId: "1",
+            startTimestamp: "2023-12-06T12:00:00",
+            endTimestamp: "2023-12-06T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "green",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session7",
+        patientId: "1",
+        startTimestamp: "2023-12-07T12:00:00",
+        endTimestamp: "2023-12-07T12:30:00",
+        exercises: [
+          {
+            id: "ex7",
+            patientId: "1",
+            startTimestamp: "2023-12-07T12:00:00",
+            endTimestamp: "2023-12-07T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "yellow",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session8",
+        patientId: "1",
+        startTimestamp: "2023-12-08T12:00:00",
+        endTimestamp: "2023-12-08T12:30:00",
+        exercises: [
+          {
+            id: "ex8",
+            patientId: "1",
+            startTimestamp: "2023-12-08T12:00:00",
+            endTimestamp: "2023-12-08T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "yellow",
+              perJointPerformance: [
+                {
+                  jointName: "neck",
+                  color: "red",
+                },
+                {
+                  jointName: "shoulders",
+                  color: "red",
+                },
+                {
+                  jointName: "elbows",
+                  color: "red",
+                },
+                {
+                  jointName: "hands",
+                  color: "red",
+                },
+                {
+                  jointName: "waist",
+                  color: "red",
+                },
+                {
+                  jointName: "Hip",
+                  color: "green",
+                },
+                {
+                  jointName: "knees",
+                  color: "red",
+                },
+                {
+                  jointName: "ankle",
+                  color: "red",
+                },
+                {
+                  jointName: "feet",
+                  color: "yellow",
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        id: "session9",
+        patientId: "1",
+        startTimestamp: "2023-12-09T12:00:00",
+        endTimestamp: "2023-12-09T12:30:00",
+        exercises: [
+          {
+            id: "ex9",
+            patientId: "1",
+            startTimestamp: "2023-12-09T12:00:00",
+            endTimestamp: "2023-12-09T12:30:00",
+            type: "singleLeggedSquat",
+            videoId: "video2",
+            notes: "patient had an issue",
+            performanceMetrics: {
+              color: "green",
               perJointPerformance: [
                 {
                   jointName: "neck",
