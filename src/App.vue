@@ -1,17 +1,18 @@
 <template>
-  <header>
-    <router-link :to="`/PatientHistory/${this.id}`">Chart</router-link>
-  </header>
-  <RouterView></RouterView>
+    <header>
+      <router-link v-bind:id="id" :to="`/PatientHistory/${this.id}`">Chart</router-link>
+    </header>
+    <div class="viewContainer">
+      <RouterView></RouterView>
+    </div>
 </template>
 
 <script>
-import patient from '@/data/patientInformation.json'
 
 export default {
     data(){
         return {
-            id: patient[0].ID
+          id : 1
         }
     },
   }
@@ -20,9 +21,6 @@ export default {
 <style>
 body {
   margin: 0;
-}
-#app {
-  margin:auto;
 }
 header {
   background-color: black;
@@ -36,8 +34,11 @@ a{
   padding: 14px;
 }
 
-.container {
+.viewContainer {
   background-color: white;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 900px;
 }
 
 </style>

@@ -9,10 +9,12 @@
 <script>
 import { Chart } from 'chart.js/auto'
 import { getRelativePosition } from 'chart.js/helpers';
-import patientExercises from '@/data/exerciseData.json'
+import api from '@/data/api.js'
 
 export default {
+    props: ['id'],
     mounted (){
+        this.fetchExerciseData();
         this.historyChart();
     },
     data(){
@@ -22,6 +24,15 @@ export default {
         }
     },
     methods: {
+        async fetchExerciseData(){
+           try {
+            const data = await api.getExerciseSessions(this.id);
+            this.patientExercises = data;
+           }
+           catch (err){
+
+           } 
+        },
         handleForward(){
             if(this.index > 0){
                 this.index--;
@@ -91,7 +102,9 @@ export default {
         }, 
         getAverageExercise(){
             let newExerciseList = [];
-            let exerciseObj = this.patientExercises[0].PatientData;
+            
+            let exerciseObj = this.patientExercises;
+            console.log(exerciseObj)
 
             const exerciseList = Object.entries(exerciseObj).slice().map(entry => entry[1]);
             const exerciseSplitList = exerciseList.reverse().slice(this.index, this.index + 5);
@@ -150,7 +163,6 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        box-sizing: border-box;
     }
     #backwardInTime, #forwardInTime{
         font-size: 40px;
