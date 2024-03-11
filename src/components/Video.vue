@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div id="video">
         <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
-        <button type="button" class="btn btn-info" @click.prevent="startRecording()" v-bind:disabled="isStartRecording" id="btnStart">Start Recording</button>
-        <button type="button" class="btn btn-success" @click.prevent="submitVideo()" v-bind:disabled="isSaveDisabled" id="btnSave">{{ submitText }}</button>
-        <button type="button" class="btn btn-primary" @click.prevent="retakeVideo()" v-bind:disabled="isRetakeDisabled" id="btnRetake">Retake</button>
+        <div id="videoMenue">
+            <button type="button" @click.prevent="startRecording()" id="btnStart">Start Recording</button>
+            <button type="button" @click.prevent="stopRecording()" id="btnStop">Stop Recording</button>
+            <button type="button" @click.prevent="submitVideo()" v-bind:disabled="isSaveDisabled" id="btnSave">Submit</button>
+        </div>
     </div>
 </template>
 
@@ -12,42 +14,36 @@
     import 'videojs-record/dist/css/videojs.record.css'
     import videojs from 'video.js'
     import 'webrtc-adapter'
-    import RecordRTC from 'recordrtc'
     import Record from 'videojs-record/dist/videojs.record.js'
-    import FFmpegjsEngine from 'videojs-record/dist/plugins/videojs.record.ffmpegjs.js'
+    import api from '@/data/api.js'
+
 
 export default {
+    props : ['id'],
     data() {
         return {
             player: '',
-            retake: 0,
             isSaveDisabled: true,
-            isStartRecording: false,
-            isRetakeDisabled: true,
             submitText: 'Submit',
             options: {
                 controls: true,
-                    autoplay: false,
-                    fluid: false,
-                    loop: false,
-                    width: 320,
-                    height: 240,
-                    bigPlayButton: false,
+                autoplay: false,
+                fluid: true,
+                loop: false,
+                height: 700,
+                bigPlayButton: false,
                 controlBar: {
                     deviceButton: false,
                     recordToggle: false,
                     pipToggle: false,
                     volumePanel: false
                 },
-                width: 500,
-                height: 300,
-                fluid: true,
                 plugins: {
                     record: {
+                        maxLength: 180,
                         pip: false,
                         audio: false,
                         video: true,
-                        maxLength: 10, // ta bort
                         debug: true
                     }
                 }
@@ -59,62 +55,57 @@ export default {
 
         this.player.on('deviceReady', () => {
             this.player.record().start();
-            console.log('device ready:');
         });
-        // user clicked the record button and started recording
-        this.player.on('startRecord', () => {
-            console.log('started recording!');
-        });
+        
         // user completed recording and stream is available
         this.player.on('finishRecord', () => {
             this.isSaveDisabled = false;
-            if(this.retake == 0) {
-                this.isRetakeDisabled = false;
-            }
             // the blob object contains the recorded data that
             // can be downloaded by the user, stored on server etc.
-            console.log('finished recording: ', this.player.recordedData);
         });
     },
     methods: {
         startRecording() {
-            this.isStartRecording = true;
             this.player.record().getDevice();
+            document.getElementById("btnStart").style.display = "none"
+            document.getElementById("btnStop").style.display = "block"
         },
+         stopRecording(){
+            this.player.record().stopDevice();
+            document.getElementById("btnStart").style.display = "block"
+            document.getElementById("btnStop").style.display = "none"
+         },
         submitVideo() {
             this.isSaveDisabled = true;
-            this.isRetakeDisabled = true;
-            var data = this.player.recordedData;
-            var formData = new FormData();
-            formData.append('video', data, data.name);
-            this.submitText = "Uploading "+data.name;
-            console.log('uploading recording:', data.name);
-            this.player.record().stopDevice();
-            fetch(this.uploadUrl, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            }).then(
-                success => {
-                    console.log('recording upload complete.');
-                    this.submitText = "Upload Complete";
-                }
-            ).catch(
-                error =>{
-                    console.error('an upload error occurred!');
-                    this.submitText = "Upload Failed";
-                }
-            );
+            
+            const data = this.player.recordedData;
+            const formData = new FormData();
+            this.postPatientData()
+            
         },
-        retakeVideo() {
-            this.isSaveDisabled = true;
-            this.isRetakeDisabled = true;
-            this.retake += 1;
-            this.player.record().start();
+        async postPatientData (){
+            api.postExerciseSession(this.id);
         }
     },
 }                
 </script>
+<style>
+    #video{
+        margin: 10px;
+    }
+    #myVideo{
+        height: 700px;
+        box-sizing: border-box;
+    }
+    #btnStop{
+        display: none;
+    }
+    #videoMenue {
+        display: flex;
+        justify-content: center;
+    }
+    #videoMenue button{
+        margin: 5px;
+    }
+</style>
   
