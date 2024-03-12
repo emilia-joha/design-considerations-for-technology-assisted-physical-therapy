@@ -30,7 +30,6 @@ export default {
     async fetchExerciseData() {
       try {
         const data = await api.getExerciseSessions(this.id);
-        console.log(data);
         this.patientExercises = data;
         this.historyChart();
       } catch (err) {
@@ -162,7 +161,7 @@ export default {
 </script>
 <style>
 .chartContainer {
-  padding: 50px;
+  padding: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,12 +172,14 @@ export default {
   border: none;
   cursor: pointer;
   font-size: 40px;
+  margin: 10px;
+  padding: 0;
 }
 #forwardInTime {
   display: none;
 }
 .btnContainer {
-  min-width: 29.42px;
+  min-width: 37.42px;
   display: block;
 }
 </style>

@@ -60,7 +60,7 @@ export default {
             pip: false,
             audio: false,
             video: true,
-            debug: true,
+            debug: false,
           },
         },
       },
@@ -123,7 +123,7 @@ export default {
   justify-content: center;
 }
 #videoMenue button {
-  margin: 15px;
+  margin: 10px;
   width: 50px;
   height: 50px;
   background-color: inherit;

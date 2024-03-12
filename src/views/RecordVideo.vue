@@ -1,16 +1,18 @@
 <template>
-  <PatientInfo v-bind:id="id"/>
-  <Video v-bind:id="id"/>
+  <div class="container">
+    <PatientInfo v-bind:id="id" />
+    <Video v-bind:id="id" />
+  </div>
 </template>
 <script>
-import PatientInfo from "@/components/PatientInfo.vue"
-import Video from "@/components/Video.vue"
+import PatientInfo from "@/components/PatientInfo.vue";
+import Video from "@/components/Video.vue";
 
 export default {
-    props: ['id'],
-    components: {
-        PatientInfo,
-        Video
-    }
-}
+  props: ["id"],
+  components: {
+    PatientInfo,
+    Video,
+  },
+};
 </script>

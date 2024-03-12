@@ -1,40 +1,43 @@
 <template>
-    <div id="patientInfomation">
-        <p>{{this.names}}</p>
-        <p>{{this.dateOfBirth}}</p>
-    </div>
+  <div id="patientInfomation">
+    <p id="patientName">{{ this.names }}</p>
+    <p id="patientDateOfBirth">{{ this.dateOfBirth }}</p>
+  </div>
 </template>
 <script>
-import api from '@/data/api.js'
+import api from "@/data/api.js";
 
 export default {
-    props: ['id'],
-    data(){
-        return {
-            names : "",
-            dateOfBirth : ""
-        }
+  props: ["id"],
+  data() {
+    return {
+      names: "",
+      dateOfBirth: "",
+    };
+  },
+  mounted() {
+    this.fetchPatientData();
+  },
+  methods: {
+    async fetchPatientData() {
+      try {
+        const data = await api.getPatientDetails(this.id);
+        this.names = data.names;
+        this.dateOfBirth = data.dateOfBirth;
+      } catch (err) {}
     },
-    mounted(){
-        this.fetchPatientData()
-    },
-    methods: {
-        async fetchPatientData(){
-           try {
-            const data = await api.getPatientDetails(this.id);
-            this.names = data.names;
-            this.dateOfBirth = data.dateOfBirth;
-           }
-           catch (err){
-
-           }
-            
-        }
-    }
-}
+  },
+};
 </script>
 <style>
-    #patientInfomation p {
-        text-align: center;
-    }
+#patientInfomation {
+  margin: 10px;
+}
+#patientInfomation p {
+  text-align: center;
+  margin: 10px;
+}
+#patientName {
+  font-size: 20px;
+}
 </style>
