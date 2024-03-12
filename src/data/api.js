@@ -30,18 +30,17 @@ export default {
     return exercise;
   },
 
-  async postExerciseSession(id, video) {
+  async postExerciseSession(id, video, date) {
     const sessionId = data.exerciseSessions
       .filter(({ patientId }) => patientId === id)
       .pop()
       .id.slice(7);
-    const date = new Date().toISOString();
 
     const newExercise = {
-      id: "session" + (sessionId + 1),
+      id: "session" + (Number(sessionId) + 1),
       patientId: "1",
-      startTimestamp: "2023-12-09T12:00:00",
-      endTimestamp: "2023-12-09T12:30:00",
+      startTimestamp: date,
+      endTimestamp: date,
       exercises: [
         {
           id: "ex1",
