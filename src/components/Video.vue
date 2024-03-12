@@ -3,10 +3,14 @@
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
     <div id="videoMenue">
       <button type="button" @click.prevent="startRecording()" id="btnStart">
-        <div><img src="@/assets/play-button.png" /></div>
+        <div>
+          <img src="@/assets/play-button.png" />
+        </div>
       </button>
       <button type="button" @click.prevent="stopRecording()" id="btnStop">
-        <div><img src="@/assets/stop-button.png" /></div>
+        <div>
+          <img src="@/assets/stop-button.png" />
+        </div>
       </button>
       <button
         type="button"
@@ -14,7 +18,9 @@
         v-bind:disabled="isSaveDisabled"
         id="btnSave"
       >
-        <div><img src="@/assets/diskette.png" /></div>
+        <div>
+          <img src="@/assets/diskette.png" />
+        </div>
       </button>
     </div>
   </div>
@@ -123,6 +129,7 @@ export default {
   background-color: inherit;
   border: none;
   font-size: 50px;
+  cursor: pointer;
 }
 #videoMenue img {
   width: 50px;

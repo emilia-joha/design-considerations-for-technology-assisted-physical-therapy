@@ -1,8 +1,12 @@
 <template>
   <div class="chartContainer">
-    <button id="backwardInTime" @click="handleBackward()"><</button>
+    <div class="btnContainer">
+      <button id="backwardInTime" @click="handleBackward()">&#10096;</button>
+    </div>
     <canvas id="patientHistoryChart"></canvas>
-    <button id="forwardInTime" @click="handleForward()">></button>
+    <div class="btnContainer">
+      <button id="forwardInTime" @click="handleForward()">&#10097;</button>
+    </div>
   </div>
 </template>
 
@@ -34,18 +38,26 @@ export default {
       }
     },
     handleForward() {
+      document.getElementById("backwardInTime").style.display = "block";
       if (this.index > 0) {
         this.index--;
         this.patientHistoryChart.destroy();
         this.historyChart();
+        if (this.index == 0) {
+          document.getElementById("forwardInTime").style.display = "none";
+        }
       }
     },
     handleBackward() {
+      document.getElementById("forwardInTime").style.display = "block";
       const listLength = this.patientExercises.length;
-      if (this.index < listLength - 5) {
+      if (this.index < listLength - 3) {
         this.index++;
         this.patientHistoryChart.destroy();
         this.historyChart();
+      }
+      if (this.index == listLength - 3) {
+        document.getElementById("backwardInTime").style.display = "none";
       }
     },
     historyChart() {
@@ -135,7 +147,7 @@ export default {
       }
       let exerciseSplitList = newExerciseList
         .reverse()
-        .slice(this.index, this.index + 5);
+        .slice(this.index, this.index + 3);
 
       return exerciseSplitList.reverse();
     },
@@ -157,10 +169,16 @@ export default {
 }
 #backwardInTime,
 #forwardInTime {
-  font-size: 40px;
   background-color: inherit;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  font-size: 40px;
+}
+#forwardInTime {
+  display: none;
+}
+.btnContainer {
+  min-width: 29.42px;
+  display: block;
 }
 </style>
