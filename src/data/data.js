@@ -483,7 +483,7 @@ const exerciseSessions = [
         startTimestamp: "2023-12-09T12:00:00",
         endTimestamp: "2023-12-09T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "http://localhost:5173/b0067120-0a24-4165-9de1-d385b9516b93",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "green",

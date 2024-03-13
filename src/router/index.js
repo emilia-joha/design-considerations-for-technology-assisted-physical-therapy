@@ -9,6 +9,7 @@ import Chart from "@/components/Chart.vue";
 import Video from "@/components/Video.vue";
 import Notes from "@/components/Notes.vue";
 import Skeleton from "@/components/skeleton.vue";
+import VideoPlayer from "@/components/VideoPlayer.vue";
 
 const routes = [
   {
@@ -18,7 +19,7 @@ const routes = [
   },
   {
     path: "/Patient/:id/:date",
-    components: { default: Patient, Info, Notes, Skeleton },
+    components: { default: Patient, Info, Notes, Skeleton, VideoPlayer },
     props: true,
   },
   {

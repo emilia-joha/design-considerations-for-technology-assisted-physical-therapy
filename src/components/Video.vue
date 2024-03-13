@@ -32,6 +32,9 @@ import "videojs-record/dist/css/videojs.record.css";
 import videojs from "video.js";
 import "webrtc-adapter";
 import Record from "videojs-record/dist/videojs.record.js";
+import RecordRTC from "recordrtc";
+import "@mattiasbuelens/web-streams-polyfill/dist/polyfill.min.js";
+import WebmWasmEngine from "videojs-record/dist/plugins/videojs.record.webm-wasm.js";
 import api from "@/data/api.js";
 
 export default {
@@ -40,7 +43,6 @@ export default {
     return {
       player: "",
       isSaveDisabled: true,
-      submitText: "Submit",
       options: {
         controls: true,
         autoplay: false,
@@ -57,10 +59,12 @@ export default {
         plugins: {
           record: {
             maxLength: 180,
-            pip: false,
             audio: false,
             video: true,
             debug: false,
+            videoEngine: "webm-wasm",
+            videoWorkerURL: "../../node_modules/webm-wasm/dist/webm-worker.js",
+            videoWebAssemblyURL: "webm-wasm.wasm",
           },
         },
       },
@@ -70,7 +74,17 @@ export default {
     videojs("myVideo").dispose();
   },
   mounted() {
-    this.player = videojs("myVideo", this.options);
+    this.player = videojs("#myVideo", this.options, () => {
+      // print version information at startup
+      var msg =
+        "Using video.js " +
+        videojs.VERSION +
+        " with videojs-record " +
+        videojs.getPluginVersion("record") +
+        " and recordrtc " +
+        RecordRTC.version;
+      videojs.log(msg);
+    });
 
     this.player.on("deviceReady", () => {
       this.player.record().start();
@@ -78,8 +92,6 @@ export default {
 
     this.player.on("finishRecord", () => {
       this.isSaveDisabled = false;
-      // the blob object contains the recorded data that
-      // can be downloaded by the user, stored on server etc.
     });
   },
   methods: {
@@ -97,7 +109,7 @@ export default {
       this.isSaveDisabled = true;
       const recordData = this.player.recordedData;
       const date = new Date().toISOString();
-      api.postExerciseSession(this.id, recordData.name, date);
+      api.postExerciseSession(this.id, recordData, date);
       this.changeView(date);
     },
     changeView(date) {
