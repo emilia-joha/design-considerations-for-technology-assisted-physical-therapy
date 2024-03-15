@@ -44,9 +44,9 @@ export default {
       player: "",
       isSaveDisabled: true,
       options: {
-        controls: true,
+        controls: false,
         autoplay: false,
-        fluid: true,
+
         loop: false,
         height: 700,
         bigPlayButton: false,
@@ -74,24 +74,10 @@ export default {
     videojs("myVideo").dispose();
   },
   mounted() {
-    this.player = videojs("#myVideo", this.options, () => {
-      // print version information at startup
-      var msg =
-        "Using video.js " +
-        videojs.VERSION +
-        " with videojs-record " +
-        videojs.getPluginVersion("record") +
-        " and recordrtc " +
-        RecordRTC.version;
-      videojs.log(msg);
-    });
+    this.player = videojs("#myVideo", this.options);
 
     this.player.on("deviceReady", () => {
       this.player.record().start();
-    });
-
-    this.player.on("finishRecord", () => {
-      this.isSaveDisabled = false;
     });
   },
   methods: {
@@ -101,6 +87,7 @@ export default {
       document.getElementById("btnStop").style.display = "block";
     },
     stopRecording() {
+      this.isSaveDisabled = false;
       this.player.record().stopDevice();
       document.getElementById("btnStart").style.display = "block";
       document.getElementById("btnStop").style.display = "none";
@@ -119,12 +106,13 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 #video {
   margin: 10px;
 }
 #myVideo {
   height: 700px;
+  width: 100%;
   box-sizing: border-box;
 }
 #btnStop {
@@ -153,5 +141,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.video-js {
+  padding: 0;
 }
 </style>

@@ -77,6 +77,7 @@ export default {
             },
           ],
           labels: data.map((row) => row.date),
+          color: "#000000",
         },
         options: {
           onClick: (e) => {
