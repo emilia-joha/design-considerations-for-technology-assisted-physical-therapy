@@ -27,21 +27,19 @@
 </template>
 <script>
 import videojs from "video.js";
-import api from "@/data/api.js";
-
 import "video.js/dist/video-js.css";
 import "videojs-record/dist/css/videojs.record.css";
+import api from "@/data/api.js";
 
 export default {
-  props: ["id", "date"],
+  props: ["id", "exercise"],
   data() {
     return {
       player: "",
-      patientData: [],
     };
   },
   mounted() {
-    this.fetchVideoData();
+    this.getVideoData();
   },
   unmounted() {
     if (this.player) {
@@ -49,22 +47,11 @@ export default {
     }
   },
   methods: {
-    async fetchVideoData() {
-      const apiData = await api.getExerciseSessions(this.id);
-      const exerciseSession = apiData.find(
-        (element) => element.startTimestamp.slice(0, 10) == this.date
-      );
-      const exercise = exerciseSession.exercises.find(
-        (element) => element.type == "singleLeggedSquat"
-      );
-      this.patientData.push(exercise);
-
-      if (exercise.videoId != "") {
+    getVideoData() {
+      if (this.exercise.videoId != "") {
         document.getElementById("video").style.display = "block";
         document.getElementById("btnPlay").style.display = "block";
         document.getElementById("btnDelete").style.display = "block";
-
-        this.src = URL.createObjectURL(exercise.videoId);
 
         this.player = videojs(this.$refs.video, {
           autoplay: false,
@@ -74,7 +61,7 @@ export default {
           aspectRatio: "9:16",
           sources: [
             {
-              src: this.src,
+              src: this.exercise.videoId,
               type: "video/webm",
             },
           ],
@@ -82,7 +69,7 @@ export default {
       }
     },
     async deleteVideoData() {
-      this.patientData.videoId = "";
+      api.changeVideoId(this.id, this.exercise.startTimestamp, "");
     },
     play() {
       document.getElementById("btnPlay").style.display = "none";

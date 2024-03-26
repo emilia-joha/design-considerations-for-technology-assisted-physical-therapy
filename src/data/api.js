@@ -30,8 +30,19 @@ export default {
     return exercise;
   },
 
-  async changeVideoId(id) {
-    //video id ska ändras vid delete av video
+  async changeVideoId(patientId, startTimestamp, newVideoId) {
+    const exerciseSessions = data.exerciseSessions.filter(
+      (x) => x.patientId === patientId
+    );
+
+    for (const session of exerciseSessions) {
+      for (const exercise of session.exercises) {
+        if (exercise.startTimestamp == startTimestamp) {
+          exercise.videoId = newVideoId;
+          return;
+        }
+      }
+    }
   },
   async postExerciseSession(id, video, date) {
     const sessionId = data.exerciseSessions

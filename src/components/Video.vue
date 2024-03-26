@@ -116,7 +116,7 @@ export default {
     },
     submitVideo() {
       this.isSaveDisabled = true;
-      const recordData = this.player.recordedData;
+      const recordData = URL.createObjectURL(this.player.recordedData);
       const date = new Date().toISOString();
       api.postExerciseSession(this.id, recordData, date);
       this.changeView(date);
