@@ -1,6 +1,7 @@
 <template>
   <div class="relative">
     <img src="@/assets/skeleton-one-legged-squat.png" />
+
     <div class="smallCircle" id="neck"></div>
     <div class="bigCircle" id="shoulders"></div>
     <div class="bigCircle" id="elbows"></div>
@@ -41,65 +42,70 @@ export default {
 };
 </script>
 <style scoped>
-div {
-  display: none;
-}
 .relative {
   margin-top: 50px;
   position: relative;
-  display: block;
 }
 img {
-  max-width: 400px;
+  max-width: 355px;
   margin: 10px;
 }
 #neck {
-  top: 95px;
-  left: 158px;
+  top: 90px;
+  left: 146px;
+  display: none;
 }
 #shoulders {
-  top: 122px;
-  left: 120px;
+  top: 111px;
+  left: 111px;
+  display: none;
 }
 #elbows {
-  top: 122px;
-  left: 250px;
+  top: 111px;
+  left: 224px;
+  display: none;
 }
 #hands {
-  top: 132px;
-  left: 371px;
+  top: 122px;
+  left: 338px;
+  display: none;
 }
 #waist {
-  top: 215px;
-  left: 42px;
+  top: 190px;
+  left: 46px;
+  display: none;
 }
 #hip {
-  top: 268px;
-  left: 0px;
+  top: 243px;
+  left: 12px;
+  display: none;
 }
 #knees {
-  top: 377px;
-  left: 120px;
+  top: 342px;
+  left: 111px;
+  display: none;
 }
 #ankle {
-  top: 532px;
-  left: 97px;
+  top: 476px;
+  left: 90px;
+  display: none;
 }
 #feet {
-  top: 542px;
-  left: 167px;
+  top: 487px;
+  left: 147px;
+  display: none;
 }
 .bigCircle {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
   margin: 0;
   position: absolute;
 }
 .smallCircle {
-  width: 30px;
-  height: 30px;
-  border-radius: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
   margin: 0;
   position: absolute;
 }
