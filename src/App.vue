@@ -42,6 +42,6 @@ a {
   background-color: white;
   margin: auto;
   box-sizing: border-box;
-  max-width: 700px;
+  max-width: 400px;
 }
 </style>

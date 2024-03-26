@@ -1,7 +1,22 @@
 <template>
   <div id="video">
-    <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+    <video
+      ref="myVideo"
+      id="myVideo"
+      playsinline
+      class="video-js vjs-default-skin"
+    ></video>
     <div id="videoMenue">
+      <button
+        type="button"
+        @click.prevent="replayRecording()"
+        v-bind:disabled="isReplayDisabled"
+        id="btnReplay"
+      >
+        <div>
+          <img src="@/assets/replay.png" />
+        </div>
+      </button>
       <button type="button" @click.prevent="startRecording()" id="btnStart">
         <div>
           <img src="@/assets/play-button.png" />
@@ -43,12 +58,26 @@ export default {
     return {
       player: "",
       isSaveDisabled: true,
-      options: {
+      isReplayDisabled: true,
+    };
+  },
+  unmounted() {
+    videojs("myVideo").dispose();
+  },
+  mounted() {
+    this.setPlayer();
+
+    this.player.on("deviceReady", () => {
+      this.player.record().start();
+    });
+  },
+  methods: {
+    setPlayer() {
+      this.player = videojs(this.$refs.myVideo, {
+        fluid: true,
+        aspectRatio: "9:16",
         controls: false,
         autoplay: false,
-
-        loop: false,
-        height: 700,
         bigPlayButton: false,
         controlBar: {
           deviceButton: false,
@@ -62,25 +91,12 @@ export default {
             audio: false,
             video: true,
             debug: false,
-            videoEngine: "webm-wasm",
             videoWorkerURL: "../../node_modules/webm-wasm/dist/webm-worker.js",
             videoWebAssemblyURL: "webm-wasm.wasm",
           },
         },
-      },
-    };
-  },
-  unmounted() {
-    videojs("myVideo").dispose();
-  },
-  mounted() {
-    this.player = videojs("#myVideo", this.options);
-
-    this.player.on("deviceReady", () => {
-      this.player.record().start();
-    });
-  },
-  methods: {
+      });
+    },
     startRecording() {
       this.player.record().getDevice();
       document.getElementById("btnStart").style.display = "none";
@@ -88,9 +104,15 @@ export default {
     },
     stopRecording() {
       this.isSaveDisabled = false;
+      this.isReplayDisabled = false;
       this.player.record().stopDevice();
       document.getElementById("btnStart").style.display = "block";
       document.getElementById("btnStop").style.display = "none";
+    },
+    replayRecording() {
+      const data = (this.src = URL.createObjectURL(this.player.recordedData));
+      this.player.src = data;
+      this.player.play();
     },
     submitVideo() {
       this.isSaveDisabled = true;
@@ -109,9 +131,9 @@ export default {
 <style scoped>
 #video {
   margin: 10px;
+  max-width: 1920px;
 }
 #myVideo {
-  height: 700px;
   width: 100%;
   box-sizing: border-box;
 }

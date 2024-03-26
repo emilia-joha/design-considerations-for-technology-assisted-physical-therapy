@@ -30,6 +30,9 @@ export default {
     return exercise;
   },
 
+  async changeVideoId(id) {
+    //video id ska ändras vid delete av video
+  },
   async postExerciseSession(id, video, date) {
     const sessionId = data.exerciseSessions
       .filter(({ patientId }) => patientId === id)

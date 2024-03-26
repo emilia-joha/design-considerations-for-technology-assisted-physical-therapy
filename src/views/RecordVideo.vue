@@ -14,5 +14,8 @@ export default {
     PatientInfo,
     Video,
   },
+  data() {
+    return {};
+  },
 };
 </script>
