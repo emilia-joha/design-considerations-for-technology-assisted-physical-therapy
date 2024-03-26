@@ -88,7 +88,7 @@ export default {
                 color: "red",
               },
               {
-                jointName: "Hip",
+                jointName: "hip",
                 color: "green",
               },
               {

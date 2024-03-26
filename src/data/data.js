@@ -19,7 +19,7 @@ const exerciseSessions = [
         startTimestamp: "2023-12-01T12:00:00",
         endTimestamp: "2023-12-01T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video1",
+        videoId: "",
         notes: "well done!",
         performanceMetrics: {
           color: "yellow",
@@ -45,7 +45,7 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
@@ -77,14 +77,14 @@ const exerciseSessions = [
         startTimestamp: "2023-12-02T12:00:00",
         endTimestamp: "2023-12-02T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "red",
           perJointPerformance: [
             {
               jointName: "neck",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "shoulders",
@@ -103,7 +103,7 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
@@ -135,7 +135,7 @@ const exerciseSessions = [
         startTimestamp: "2023-12-03T12:00:00",
         endTimestamp: "2023-12-03T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "red",
@@ -150,7 +150,7 @@ const exerciseSessions = [
             },
             {
               jointName: "elbows",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "hands",
@@ -161,7 +161,7 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
@@ -193,18 +193,18 @@ const exerciseSessions = [
         startTimestamp: "2023-12-04T12:00:00",
         endTimestamp: "2023-12-04T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
-          color: "red",
+          color: "green",
           perJointPerformance: [
             {
               jointName: "neck",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "shoulders",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "elbows",
@@ -212,23 +212,23 @@ const exerciseSessions = [
             },
             {
               jointName: "hands",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "waist",
-              color: "red",
+              color: "green",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
               jointName: "knees",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "feet",
@@ -251,7 +251,7 @@ const exerciseSessions = [
         startTimestamp: "2023-12-05T12:00:00",
         endTimestamp: "2023-12-05T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "yellow",
@@ -262,7 +262,7 @@ const exerciseSessions = [
             },
             {
               jointName: "shoulders",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "elbows",
@@ -270,23 +270,23 @@ const exerciseSessions = [
             },
             {
               jointName: "hands",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "waist",
-              color: "red",
+              color: "yellow",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
               jointName: "knees",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "feet",
@@ -309,42 +309,42 @@ const exerciseSessions = [
         startTimestamp: "2023-12-06T12:00:00",
         endTimestamp: "2023-12-06T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "green",
           perJointPerformance: [
             {
               jointName: "neck",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "shoulders",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "elbows",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "hands",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "waist",
-              color: "red",
+              color: "yellow",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
               jointName: "knees",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "feet",
@@ -367,18 +367,18 @@ const exerciseSessions = [
         startTimestamp: "2023-12-07T12:00:00",
         endTimestamp: "2023-12-07T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "yellow",
           perJointPerformance: [
             {
               jointName: "neck",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "shoulders",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "elbows",
@@ -390,19 +390,19 @@ const exerciseSessions = [
             },
             {
               jointName: "waist",
-              color: "red",
+              color: "green",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
               jointName: "knees",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "feet",
@@ -425,7 +425,7 @@ const exerciseSessions = [
         startTimestamp: "2023-12-08T12:00:00",
         endTimestamp: "2023-12-08T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "video2",
+        videoId: "",
         notes: "patient had an issue",
         performanceMetrics: {
           color: "yellow",
@@ -436,7 +436,7 @@ const exerciseSessions = [
             },
             {
               jointName: "shoulders",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "elbows",
@@ -444,14 +444,14 @@ const exerciseSessions = [
             },
             {
               jointName: "hands",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "waist",
-              color: "red",
+              color: "green",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
@@ -460,7 +460,7 @@ const exerciseSessions = [
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "yellow",
             },
             {
               jointName: "feet",
@@ -490,7 +490,7 @@ const exerciseSessions = [
           perJointPerformance: [
             {
               jointName: "neck",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "shoulders",
@@ -498,27 +498,27 @@ const exerciseSessions = [
             },
             {
               jointName: "elbows",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "hands",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "waist",
               color: "red",
             },
             {
-              jointName: "Hip",
+              jointName: "hip",
               color: "green",
             },
             {
               jointName: "knees",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "ankle",
-              color: "red",
+              color: "green",
             },
             {
               jointName: "feet",
