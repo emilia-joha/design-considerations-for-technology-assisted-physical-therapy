@@ -6,7 +6,7 @@ import RecordVideo from "@/views/RecordVideo.vue";
 
 import Info from "@/components/PatientInfo.vue";
 import Chart from "@/components/Chart.vue";
-import Video from "@/components/Video.vue";
+import Video from "@/components/VideoRecorder.vue";
 import Notes from "@/components/Notes.vue";
 import Skeleton from "@/components/skeleton.vue";
 import VideoPlayer from "@/components/VideoPlayer.vue";

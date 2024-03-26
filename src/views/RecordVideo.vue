@@ -6,7 +6,7 @@
 </template>
 <script>
 import PatientInfo from "@/components/PatientInfo.vue";
-import Video from "@/components/Video.vue";
+import Video from "@/components/VideoRecorder.vue";
 
 export default {
   props: ["id"],
