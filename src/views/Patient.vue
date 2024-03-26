@@ -9,7 +9,7 @@
 <script>
 import PatientInfo from "@/components/PatientInfo.vue";
 import Notes from "@/components/Notes.vue";
-import Skeleton from "@/components/skeleton.vue";
+import Skeleton from "@/components/Skeleton.vue";
 import VideoPlayer from "@/components/VideoPlayer.vue";
 import api from "@/data/api.js";
 
