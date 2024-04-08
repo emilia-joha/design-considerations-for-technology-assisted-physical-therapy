@@ -1,27 +1,29 @@
 <template>
-  <div id="video">
-    <video
-      ref="video"
-      id="myVideo"
-      playsinline
-      class="video-js vjs-default-skin"
-    ></video>
-    <div id="videoMenue">
-      <button type="button" @click.prevent="play()" id="btnPlay">
-        <div>
-          <img src="@/assets/play-button.png" />
-        </div>
-      </button>
-      <button type="button" @click.prevent="pause()" id="btnPause">
-        <div>
-          <img src="@/assets/pause.png" />
-        </div>
-      </button>
-      <button type="button" @click.prevent="deleteRecord()" id="btnDelete">
-        <div>
-          <img src="@/assets/recycle-bin.png" />
-        </div>
-      </button>
+  <div id="videoContainer">
+    <div id="video">
+      <video
+        ref="video"
+        id="myVideo"
+        playsinline
+        class="video-js vjs-default-skin"
+      ></video>
+      <div id="videoMenue">
+        <button type="button" @click.prevent="play()" id="btnPlay">
+          <div>
+            <img src="@/assets/play-button.png" />
+          </div>
+        </button>
+        <button type="button" @click.prevent="pause()" id="btnPause">
+          <div>
+            <img src="@/assets/pause.png" />
+          </div>
+        </button>
+        <button type="button" @click.prevent="deleteRecord()" id="btnDelete">
+          <div>
+            <img src="@/assets/recycle-bin.png" />
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -89,8 +91,13 @@ export default {
 };
 </script>
 <style scoped>
+#videoContainer {
+  display: flex;
+  justify-content: center;
+}
 #video {
-  margin: 10px;
+  width: 300px;
+  margin: 30px 0px;
   display: none;
 }
 #myVideo {

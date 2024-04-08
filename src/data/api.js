@@ -44,6 +44,20 @@ export default {
       }
     }
   },
+  async addNote(patientId, startTimestamp, note) {
+    const exerciseSessions = data.exerciseSessions.filter(
+      (x) => x.patientId === patientId
+    );
+
+    for (const session of exerciseSessions) {
+      for (const exercise of session.exercises) {
+        if (exercise.startTimestamp == startTimestamp) {
+          exercise.notes.push(note);
+          return;
+        }
+      }
+    }
+  },
   async postExerciseSession(id, video, date) {
     const sessionId = data.exerciseSessions
       .filter(({ patientId }) => patientId === id)

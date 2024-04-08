@@ -160,7 +160,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .chartContainer {
   padding: 35px;
   display: flex;

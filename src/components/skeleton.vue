@@ -43,61 +43,64 @@ export default {
 </script>
 <style scoped>
 .relative {
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 img {
-  max-width: 355px;
+  width: 300px;
   margin: 10px;
 }
 #neck {
-  top: 90px;
-  left: 146px;
+  top: 77px;
+  left: 149px;
   display: none;
 }
 #shoulders {
-  top: 111px;
-  left: 111px;
+  top: 95px;
+  left: 121px;
   display: none;
 }
 #elbows {
-  top: 111px;
-  left: 224px;
+  top: 95px;
+  left: 214px;
   display: none;
 }
 #hands {
-  top: 122px;
-  left: 338px;
+  top: 103px;
+  left: 313px;
   display: none;
 }
 #waist {
-  top: 190px;
-  left: 46px;
+  top: 169px;
+  left: 60px;
   display: none;
 }
 #hip {
-  top: 243px;
-  left: 12px;
+  top: 207px;
+  left: 31px;
   display: none;
 }
 #knees {
-  top: 342px;
-  left: 111px;
+  top: 286px;
+  left: 122px;
   display: none;
 }
 #ankle {
-  top: 476px;
-  left: 90px;
+  top: 401px;
+  left: 104px;
   display: none;
 }
 #feet {
-  top: 487px;
-  left: 147px;
+  top: 411px;
+  left: 152px;
   display: none;
 }
 .bigCircle {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 20px;
   margin: 0;
   position: absolute;
