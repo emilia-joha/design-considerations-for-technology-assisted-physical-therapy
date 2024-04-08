@@ -13,7 +13,7 @@
 
 /**
  * @typedef {Object} SingleLeggedSquatPerformanceMetrics
- * @property {!string} color - traffic light for all the exercise, can be 
+ * @property {!string} color - traffic light for all the exercise, can be
  * @property {Array<JointPerformanceMetric>} perJointPerformance - array of traffic lights per each joint
  */
 
@@ -26,16 +26,19 @@
  * @property {!string} type - type of exercise, can be "singleLeggedSquat"
  * @property {?string} videoId - id of the video associated with the exercise
  * @property {?SingleLeggedSquatPerformanceMetrics} performanceMetrics - object containing metrics about the quality of the exercise
- * @property {?string} notes - notes about the exercise
+ * @property {?Array<Notes>} notes
+ */
+/**
+ * @typedef {Object} Notes
+ * @property {string} note - notes about the exercise
+ * @property {string} date - ISO 8601 date and time
  */
 
 /**
  * @typedef {Object} ExerciseSession
  * @property {!string} id - unique identifier
  * @property {!string} patientId - unique identifier of the patient
- * @property {string} startTimestamp - ISO 8601 date and time 
+ * @property {string} startTimestamp - ISO 8601 date and time
  * @property {string} endTimestamp - ISO 8601 date and time
  * @property {Array<Exercise>} exercises - array of exercises
  */
-
-

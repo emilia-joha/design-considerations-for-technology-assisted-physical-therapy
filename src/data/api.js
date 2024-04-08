@@ -63,7 +63,7 @@ export default {
           endTimestamp: date,
           type: "singleLeggedSquat",
           videoId: video,
-          notes: "",
+          notes: [],
           performanceMetrics: {
             color: "green",
             perJointPerformance: [

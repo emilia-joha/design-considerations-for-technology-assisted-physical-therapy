@@ -20,7 +20,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-01T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "well done!",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "yellow",
           perJointPerformance: [
@@ -78,7 +87,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-02T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "red",
           perJointPerformance: [
@@ -136,7 +154,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-03T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "red",
           perJointPerformance: [
@@ -194,7 +221,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-04T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "green",
           perJointPerformance: [
@@ -252,7 +288,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-05T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "yellow",
           perJointPerformance: [
@@ -310,7 +355,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-06T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "green",
           perJointPerformance: [
@@ -368,7 +422,12 @@ const exerciseSessions = [
         endTimestamp: "2023-12-07T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "yellow",
           perJointPerformance: [
@@ -426,7 +485,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-08T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "patient had an issue",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Good job!",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "yellow",
           perJointPerformance: [
@@ -484,7 +552,16 @@ const exerciseSessions = [
         endTimestamp: "2023-12-09T12:30:00",
         type: "singleLeggedSquat",
         videoId: "",
-        notes: "patient had an issue",
+        notes: [
+          {
+            note: "Integer bibendum euismod est. Ut fermentum tincidunt hendrerit. Donec eu elementum sem. Nulla facilisi. Ut finibus ultricies auctor. Praesent eu leo egestas, eleifend dui porttitor, bibendum massa.",
+            date: "2023-12-09T12:00:00",
+          },
+          {
+            note: "Integer bibendum euismod est. Ut fermentum tincidunt hendrerit. Donec eu elementum sem. Nulla facilisi. Ut finibus ultricies auctor. Praesent eu leo egestas, eleifend dui porttitor, bibendum massa.",
+            date: "2023-12-20T12:00:00",
+          },
+        ],
         performanceMetrics: {
           color: "green",
           perJointPerformance: [
