@@ -3,7 +3,12 @@
     <PatientInfo v-bind:id="id" />
     <VideoPlayer v-bind:id="id" v-if="done" v-bind:exercise="exercise" />
     <Skeleton v-bind:id="id" v-if="done" v-bind:exercise="exercise" />
-    <Notes v-bind:id="id" v-if="done" v-bind:exercise="exercise" />
+    <Notes
+      v-bind:id="id"
+      v-if="done"
+      v-bind:notes="exercise.notes"
+      v-bind:timestamp="exercise.startTimestamp"
+    />
   </div>
 </template>
 <script>

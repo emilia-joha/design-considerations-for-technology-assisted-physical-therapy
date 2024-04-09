@@ -1,12 +1,12 @@
 <template>
   <div id="notes">
     <h2>Notes</h2>
-    <div v-for="note in this.exercise.notes">
-      <div class="note">
-        <p class="text">{{ note.note }}</p>
-        <p class="date">{{ note.date.slice(0, 10) }}</p>
-      </div>
-    </div>
+    <Note
+      v-for="(note, i) in this.notes"
+      :key="i"
+      :noteText="note.note"
+      :notedate="note.date.slice(0, 10)"
+    />
     <div id="write">
       <textarea id="text"></textarea>
     </div>
@@ -18,8 +18,12 @@
 </template>
 <script>
 import api from "@/data/api.js";
+import Note from "@/components/Note.vue";
 export default {
-  props: ["id", "exercise"],
+  props: ["id", "notes", "timestamp"],
+  components: {
+    Note,
+  },
   mounted() {},
   methods: {
     write() {
@@ -27,14 +31,17 @@ export default {
       document.getElementById("btnWrite").style.display = "none";
       document.getElementById("btnSave").style.display = "block";
     },
-    save() {
+    async save() {
       const date = new Date().toISOString();
       const text = document.getElementById("text").value;
+      document.getElementById("text").value = "";
       document.getElementById("write").style.display = "none";
       document.getElementById("btnWrite").style.display = "block";
       document.getElementById("btnSave").style.display = "none";
       const note = { note: text, date: date };
-      api.addNote(this.id, this.exercise.startTimestamp, note);
+
+      await api.addNote(this.id, this.timestamp, note);
+      this.$forceUpdate();
     },
   },
 };
