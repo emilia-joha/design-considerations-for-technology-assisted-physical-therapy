@@ -50,12 +50,12 @@ export default {
     handleBackward() {
       document.getElementById("forwardInTime").style.display = "block";
       const listLength = this.patientExercises.length;
-      if (this.index < listLength - 3) {
+      if (this.index < listLength - 4) {
         this.index++;
         this.patientHistoryChart.destroy();
         this.historyChart();
       }
-      if (this.index == listLength - 3) {
+      if (this.index == listLength - 4) {
         document.getElementById("backwardInTime").style.display = "none";
       }
     },
@@ -68,7 +68,7 @@ export default {
         data: {
           datasets: [
             {
-              borderColor: data.map((row) => row.color),
+              borderColor: "#000000",
               backgroundColor: data.map((row) => row.color),
               data: data.map((row) => row.step),
               hoverRadius: "10",
@@ -107,9 +107,23 @@ export default {
             y: {
               ticks: {
                 stepSize: 1,
+                color: "#000000",
+                font: {
+                  size: "14",
+                  family: "'Roboto', sans-serif",
+                },
               },
               suggestedMin: 1,
               suggestedMax: 3,
+            },
+            x: {
+              ticks: {
+                color: "#000000",
+                font: {
+                  size: "14",
+                  family: "'Roboto', sans-serif",
+                },
+              },
             },
           },
         },
@@ -123,7 +137,7 @@ export default {
 
         for (const exercise of exercises) {
           const performance = exercise.performanceMetrics.color;
-          const startTime = exercise.startTimestamp.slice(0, 10);
+          const startTime = exercise.startTimestamp.slice(2, 10);
 
           let color = "";
           let steps = 0;
@@ -147,7 +161,7 @@ export default {
       }
       let exerciseSplitList = newExerciseList
         .reverse()
-        .slice(this.index, this.index + 3);
+        .slice(this.index, this.index + 4);
 
       return exerciseSplitList.reverse();
     },
@@ -172,7 +186,7 @@ export default {
   background-color: inherit;
   border: none;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 35px;
   margin: 10px;
   padding: 0;
 }

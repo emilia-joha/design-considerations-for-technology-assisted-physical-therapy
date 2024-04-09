@@ -1,42 +1,44 @@
 <template>
-  <div id="video">
-    <video
-      ref="myVideo"
-      id="myVideo"
-      playsinline
-      class="video-js vjs-default-skin"
-    ></video>
-    <div id="videoMenue">
-      <button
-        type="button"
-        @click.prevent="replayRecording()"
-        v-bind:disabled="isReplayDisabled"
-        id="btnReplay"
-      >
-        <div>
-          <img src="@/assets/replay.png" />
-        </div>
-      </button>
-      <button type="button" @click.prevent="startRecording()" id="btnStart">
-        <div>
-          <img src="@/assets/play-button.png" />
-        </div>
-      </button>
-      <button type="button" @click.prevent="stopRecording()" id="btnStop">
-        <div>
-          <img src="@/assets/stop-button.png" />
-        </div>
-      </button>
-      <button
-        type="button"
-        @click.prevent="submitVideo()"
-        v-bind:disabled="isSaveDisabled"
-        id="btnSave"
-      >
-        <div>
-          <img src="@/assets/diskette.png" />
-        </div>
-      </button>
+  <div id="videoContainer">
+    <div id="video">
+      <video
+        ref="myVideo"
+        id="myVideo"
+        playsinline
+        class="video-js vjs-default-skin"
+      ></video>
+      <div id="videoMenue">
+        <button
+          type="button"
+          @click.prevent="replayRecording()"
+          v-bind:disabled="isReplayDisabled"
+          id="btnReplay"
+        >
+          <div>
+            <img src="@/assets/replay.png" />
+          </div>
+        </button>
+        <button type="button" @click.prevent="startRecording()" id="btnStart">
+          <div>
+            <img src="@/assets/play-button.png" />
+          </div>
+        </button>
+        <button type="button" @click.prevent="stopRecording()" id="btnStop">
+          <div>
+            <img src="@/assets/stop-button.png" />
+          </div>
+        </button>
+        <button
+          type="button"
+          @click.prevent="submitVideo()"
+          v-bind:disabled="isSaveDisabled"
+          id="btnSave"
+        >
+          <div>
+            <img src="@/assets/diskette.png" />
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -122,21 +124,28 @@ export default {
       this.changeView(date);
     },
     changeView(date) {
-      date = date.slice(0, 10);
+      date = date.slice(2, 10);
       this.$router.push(`/Patient/${this.id}/${date}`);
     },
   },
 };
 </script>
 <style scoped>
+#videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 #video {
   margin: 10px;
-  max-width: 1920px;
+  width: 300px;
 }
 #myVideo {
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  border: solid 1px black;
 }
+
 #btnStop {
   display: none;
 }

@@ -99,11 +99,12 @@ img {
   display: none;
 }
 .bigCircle {
-  width: 35px;
-  height: 35px;
-  border-radius: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
   margin: 0;
   position: absolute;
+  border: 1px solid black;
 }
 .smallCircle {
   width: 20px;
@@ -111,5 +112,6 @@ img {
   border-radius: 10px;
   margin: 0;
   position: absolute;
+  border: 1px solid black;
 }
 </style>

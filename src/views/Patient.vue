@@ -36,7 +36,7 @@ export default {
     async fetchData() {
       const apiData = await api.getExerciseSessions(this.id);
       const exerciseSession = apiData.find(
-        (element) => element.startTimestamp.slice(0, 10) == this.date
+        (element) => element.startTimestamp.slice(2, 10) == this.date
       );
       const exercise = exerciseSession.exercises.find(
         (element) => element.type == "singleLeggedSquat"

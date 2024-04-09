@@ -103,6 +103,7 @@ export default {
 #myVideo {
   width: 100%;
   box-sizing: border-box;
+  border: solid 1px black;
 }
 .video-js {
   padding: 0;
