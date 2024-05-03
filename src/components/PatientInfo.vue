@@ -1,6 +1,6 @@
 <template>
   <div id="patientInfomation">
-    <p id="patientName">{{ this.names }}</p>
+    <p id="patientName">{{ this.names.toUpperCase() }}</p>
     <p id="patientDateOfBirth">{{ this.dateOfBirth }}</p>
   </div>
 </template>
@@ -31,13 +31,21 @@ export default {
 </script>
 <style scoped>
 #patientInfomation {
-  margin: 10px;
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: #5ba9af;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 10px 0 #000000;
 }
 #patientInfomation p {
   text-align: center;
-  margin: 10px;
 }
 #patientName {
-  font-size: 20px;
+  font-size: 25px;
+  margin: 0 0 10px 0;
+}
+#patientDateOfBirth {
+  font-size: 18px;
+  margin: 0;
 }
 </style>

@@ -4,9 +4,7 @@
       >Chart</router-link
     >
   </header>
-  <div class="viewContainer">
-    <RouterView></RouterView>
-  </div>
+  <RouterView></RouterView>
 </template>
 
 <script>
@@ -23,7 +21,7 @@ export default {
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  font-weight: normal;
   font-style: normal;
 }
 header {

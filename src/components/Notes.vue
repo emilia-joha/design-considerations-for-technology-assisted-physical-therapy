@@ -1,6 +1,6 @@
 <template>
   <div id="notes">
-    <h2>Notes</h2>
+    <h2>NOTES</h2>
     <Note
       v-for="(note, i) in this.notes"
       :key="i"
@@ -11,9 +11,9 @@
       <textarea id="text"></textarea>
     </div>
     <button type="button" id="btnWrite" @click.prevent="write()">
-      Add Note
+      ADD NOTE
     </button>
-    <button type="button" id="btnSave" @click.prevent="save()">Save</button>
+    <button type="button" id="btnSave" @click.prevent="save()">SAVE</button>
   </div>
 </template>
 <script>
@@ -52,18 +52,20 @@ export default {
   align-items: center;
   flex-direction: column;
   margin: 30px 0;
+  width: 300px;
 }
-
 h2 {
-  font-size: 20px;
-  font-weight: 500;
-  margin: 10px;
+  margin: 0;
+  font-size: 25px;
+  font-weight: inherit;
 }
 .note {
-  margin: 10px;
-  padding: 10px;
-  border: solid black 1px;
+  margin: 10px 0;
+  padding: 15px;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
   width: 300px;
+  box-sizing: border-box;
 }
 .date {
   font-size: 12px;
@@ -73,30 +75,33 @@ h2 {
   font-size: 14px;
 }
 button {
-  background-color: black;
+  background-color: #5ba9af;
   border: none;
-  color: white;
   font-size: 18px;
-  padding: 5px 10px;
-  margin: 10px;
+  padding: 10px 30px;
+  margin: 10px 0;
   cursor: pointer;
   box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
+  width: 300px;
 }
 #write {
   display: none;
+  width: 300px;
 }
 #btnSave {
   display: none;
 }
 textarea {
   width: 300px;
-  padding: 10px;
-  border-color: black;
-  border-width: 1px;
-  border-style: solid;
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 10px 0;
   font-size: 14px;
   font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  border: none;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
 }
 textarea:focus {
   outline: none !important;

@@ -76,8 +76,8 @@ export default {
   methods: {
     setPlayer() {
       this.player = videojs(this.$refs.myVideo, {
-        fluid: true,
-        aspectRatio: "9:16",
+        height: 470,
+        width: 300,
         controls: false,
         autoplay: false,
         bigPlayButton: false,
@@ -133,25 +133,29 @@ export default {
 <style scoped>
 #videoContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+  width: 300px;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
 }
 #video {
-  margin: 10px;
   width: 300px;
 }
 #myVideo {
   box-sizing: border-box;
   width: 100%;
-  border: solid 1px black;
+  border-radius: 15px 15px 0 0;
 }
-
 #btnStop {
   display: none;
 }
 #videoMenue {
   display: flex;
   justify-content: center;
+  background-color: #5ba9af;
+  border-radius: 0 0 15px 15px;
 }
 #videoMenue button {
   margin: 10px;
@@ -163,10 +167,14 @@ export default {
   cursor: pointer;
 }
 #videoMenue img {
-  width: 50px;
+  width: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#btnStart img,
+#btnStop img {
+  width: 50px;
 }
 #videoMenue div {
   display: flex;

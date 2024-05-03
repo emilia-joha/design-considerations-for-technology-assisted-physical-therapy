@@ -79,42 +79,62 @@ export default {
           videoId: video,
           notes: [],
           performanceMetrics: {
-            color: "green",
+            color: "yellow",
             perJointPerformance: [
               {
                 jointName: "neck",
                 color: "red",
               },
               {
-                jointName: "shoulders",
+                jointName: "shoulderRight",
                 color: "red",
               },
               {
-                jointName: "elbows",
-                color: "red",
+                jointName: "shoulderLeft",
+                color: "yellow",
               },
               {
-                jointName: "hands",
-                color: "red",
+                jointName: "elbowRight",
+                color: "yellow",
+              },
+              {
+                jointName: "elbowLeft",
+                color: "yellow",
+              },
+              {
+                jointName: "handRight",
+                color: "yellow",
+              },
+              {
+                jointName: "handLeft",
+                color: "yellow",
               },
               {
                 jointName: "waist",
-                color: "red",
-              },
-              {
-                jointName: "hip",
                 color: "green",
               },
               {
-                jointName: "knees",
+                jointName: "hipRight",
+                color: "green",
+              },
+              {
+                jointName: "hipLeft",
+                color: "yellow",
+              },
+              {
+                jointName: "kneeRight",
                 color: "red",
               },
               {
-                jointName: "ankle",
+                jointName: "kneeLeft",
+                color: "yellow",
+              },
+              {
+                jointName: "ankleRight",
                 color: "red",
               },
               {
-                jointName: "feet",
+                jointName: "ankleLeft",
                 color: "yellow",
               },
             ],

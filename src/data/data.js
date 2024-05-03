@@ -38,15 +38,27 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "red",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
               color: "yellow",
             },
             {
-              jointName: "hands",
+              jointName: "elbowRight",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
+              color: "yellow",
+            },
+            {
+              jointName: "handLeft",
               color: "yellow",
             },
             {
@@ -54,20 +66,28 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeRight",
               color: "red",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "red",
             },
             {
-              jointName: "feet",
-              color: "green",
+              jointName: "ankleLeft",
+              color: "yellow",
             },
           ],
         },
@@ -105,35 +125,55 @@ const exerciseSessions = [
               color: "yellow",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "red",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "red",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
               color: "red",
+            },
+            {
+              jointName: "handLeft",
+              color: "yellow",
             },
             {
               jointName: "waist",
               color: "red",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeRight",
               color: "red",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "red",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -172,35 +212,55 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "red",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
               color: "yellow",
             },
             {
-              jointName: "hands",
+              jointName: "elbowRight",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
               color: "red",
+            },
+            {
+              jointName: "handLeft",
+              color: "yellow",
             },
             {
               jointName: "waist",
               color: "red",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeRight",
               color: "red",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "red",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -239,15 +299,27 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "yellow",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "red",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
+              color: "yellow",
+            },
+            {
+              jointName: "handLeft",
               color: "yellow",
             },
             {
@@ -255,19 +327,27 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
               color: "yellow",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeRight",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "green",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -306,15 +386,27 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "yellow",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "red",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
+              color: "yellow",
+            },
+            {
+              jointName: "handLeft",
               color: "yellow",
             },
             {
@@ -322,19 +414,27 @@ const exerciseSessions = [
               color: "yellow",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
               color: "yellow",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeRight",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "green",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -373,35 +473,55 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "green",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
               color: "yellow",
             },
             {
-              jointName: "hands",
+              jointName: "elbowRight",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
               color: "green",
+            },
+            {
+              jointName: "handLeft",
+              color: "yellow",
             },
             {
               jointName: "waist",
               color: "yellow",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeRight",
               color: "green",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "green",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -436,35 +556,55 @@ const exerciseSessions = [
               color: "yellow",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "green",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "red",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
               color: "red",
+            },
+            {
+              jointName: "handLeft",
+              color: "yellow",
             },
             {
               jointName: "waist",
               color: "green",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
               color: "yellow",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeRight",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "green",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -503,15 +643,27 @@ const exerciseSessions = [
               color: "red",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "yellow",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "red",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
+              color: "yellow",
+            },
+            {
+              jointName: "handLeft",
               color: "yellow",
             },
             {
@@ -519,19 +671,27 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
-              color: "red",
-            },
-            {
-              jointName: "ankle",
+              jointName: "hipLeft",
               color: "yellow",
             },
             {
-              jointName: "feet",
+              jointName: "kneeRight",
+              color: "red",
+            },
+            {
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],
@@ -570,35 +730,55 @@ const exerciseSessions = [
               color: "green",
             },
             {
-              jointName: "shoulders",
+              jointName: "shoulderRight",
               color: "red",
             },
             {
-              jointName: "elbows",
+              jointName: "shoulderLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "elbowRight",
               color: "green",
             },
             {
-              jointName: "hands",
+              jointName: "elbowLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "handRight",
               color: "green",
+            },
+            {
+              jointName: "handLeft",
+              color: "yellow",
             },
             {
               jointName: "waist",
               color: "red",
             },
             {
-              jointName: "hip",
+              jointName: "hipRight",
               color: "green",
             },
             {
-              jointName: "knees",
+              jointName: "hipLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "kneeRight",
               color: "green",
             },
             {
-              jointName: "ankle",
+              jointName: "kneeLeft",
+              color: "yellow",
+            },
+            {
+              jointName: "ankleRight",
               color: "green",
             },
             {
-              jointName: "feet",
+              jointName: "ankleLeft",
               color: "yellow",
             },
           ],

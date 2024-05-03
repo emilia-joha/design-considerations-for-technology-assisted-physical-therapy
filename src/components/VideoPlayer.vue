@@ -60,7 +60,8 @@ export default {
           fluid: true,
           controls: false,
           bigPlayButton: false,
-          aspectRatio: "9:16",
+          height: 470,
+          width: 300,
           sources: [
             {
               src: this.exercise.videoId,
@@ -93,17 +94,22 @@ export default {
 <style scoped>
 #videoContainer {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 30px 0;
+  width: 300px;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
 }
 #video {
   width: 300px;
-  margin: 30px 0px;
   display: none;
 }
 #myVideo {
   width: 100%;
+  height: 470;
   box-sizing: border-box;
-  border: solid 1px black;
+  border-radius: 15px 15px 0 0;
 }
 .video-js {
   padding: 0;
@@ -114,6 +120,8 @@ export default {
 #videoMenue {
   display: flex;
   justify-content: center;
+  background-color: #5ba9af;
+  border-radius: 0 0 15px 15px;
 }
 #videoMenue button {
   margin: 10px;
@@ -130,6 +138,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#btnDelete img {
+  width: 30px;
 }
 #videoMenue div {
   display: flex;

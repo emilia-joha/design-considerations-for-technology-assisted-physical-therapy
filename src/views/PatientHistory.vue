@@ -1,11 +1,10 @@
 <template>
+  <PatientInfo v-bind:id="id" />
   <div class="container">
-    <PatientInfo v-bind:id="id" />
     <Chart v-bind:id="id" />
     <button id="recordVideo" @click="changeView()">
-      <div>
-        <img src="@/assets/video-camera.png" />
-      </div>
+      <p>RECORD VIDEO</p>
+      <img src="@/assets/video-camera.png" />
     </button>
   </div>
 </template>
@@ -29,27 +28,35 @@ export default {
 </script>
 <style scoped>
 .container {
+  margin: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  max-width: 375px;
 }
 #recordVideo {
-  width: fit-content;
-  width: 60px;
-  height: 60px;
-  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5ba9af;
   border: none;
+  font-size: 18px;
+
+  margin: 10px 0;
   cursor: pointer;
-  margin: auto;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
+  width: 300px;
+  height: 40px;
 }
 #recordVideo img {
-  width: 60px;
+  width: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: 10px;
 }
-#recordVideo div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#recordVideo p {
+  margin: 0;
 }
 </style>

@@ -1,16 +1,20 @@
 <template>
   <div class="relative">
-    <img src="@/assets/skeleton-one-legged-squat.png" />
-
+    <img src="@/assets/avatar.png" />
     <div class="smallCircle" id="neck"></div>
-    <div class="bigCircle" id="shoulders"></div>
-    <div class="bigCircle" id="elbows"></div>
-    <div class="smallCircle" id="hands"></div>
+    <div class="bigCircle" id="shoulderRight"></div>
+    <div class="bigCircle" id="shoulderLeft"></div>
+    <div class="bigCircle" id="elbowRight"></div>
+    <div class="bigCircle" id="elbowLeft"></div>
+    <div class="smallCircle" id="handRight"></div>
+    <div class="smallCircle" id="handLeft"></div>
     <div class="bigCircle" id="waist"></div>
-    <div class="bigCircle" id="hip"></div>
-    <div class="bigCircle" id="knees"></div>
-    <div class="bigCircle" id="ankle"></div>
-    <div class="smallCircle" id="feet"></div>
+    <div class="bigCircle" id="hipRight"></div>
+    <div class="bigCircle" id="hipLeft"></div>
+    <div class="bigCircle" id="kneeRight"></div>
+    <div class="bigCircle" id="kneeLeft"></div>
+    <div class="smallCircle" id="ankleRight"></div>
+    <div class="smallCircle" id="ankleLeft"></div>
   </div>
 </template>
 <script>
@@ -48,63 +52,90 @@ export default {
   position: relative;
   display: flex;
   justify-content: center;
+  width: 300px;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
 }
 img {
-  width: 300px;
+  height: 450px;
   margin: 10px;
 }
 #neck {
-  top: 77px;
-  left: 149px;
+  top: 66px;
+  left: 140px;
   display: none;
 }
-#shoulders {
-  top: 95px;
-  left: 121px;
+#shoulderRight {
+  top: 90px;
+  left: 82px;
   display: none;
 }
-#elbows {
-  top: 95px;
-  left: 214px;
+#shoulderLeft {
+  top: 90px;
+  left: 182px;
   display: none;
 }
-#hands {
-  top: 103px;
-  left: 313px;
+#elbowRight {
+  top: 163px;
+  left: 83px;
+  display: none;
+}
+#elbowLeft {
+  top: 163px;
+  left: 182px;
+  display: none;
+}
+#handRight {
+  top: 237px;
+  left: 89px;
+  display: none;
+}
+#handLeft {
+  top: 237px;
+  left: 190px;
   display: none;
 }
 #waist {
-  top: 169px;
-  left: 60px;
+  top: 170px;
+  left: 132px;
   display: none;
 }
-#hip {
-  top: 207px;
-  left: 31px;
+#hipRight {
+  top: 214px;
+  left: 113px;
   display: none;
 }
-#knees {
-  top: 286px;
-  left: 122px;
+#hipLeft {
+  top: 214px;
+  left: 153px;
   display: none;
 }
-#ankle {
-  top: 401px;
-  left: 104px;
+#kneeRight {
+  top: 324px;
+  left: 118px;
   display: none;
 }
-#feet {
-  top: 411px;
-  left: 152px;
+#kneeLeft {
+  top: 324px;
+  left: 150px;
+  display: none;
+}
+#ankleRight {
+  top: 427px;
+  left: 126px;
+  display: none;
+}
+#ankleLeft {
+  top: 427px;
+  left: 153px;
   display: none;
 }
 .bigCircle {
-  width: 36px;
-  height: 36px;
+  width: 31px;
+  height: 31px;
   border-radius: 18px;
   margin: 0;
   position: absolute;
-  border: 1px solid black;
 }
 .smallCircle {
   width: 20px;
@@ -112,6 +143,5 @@ img {
   border-radius: 10px;
   margin: 0;
   position: absolute;
-  border: 1px solid black;
 }
 </style>

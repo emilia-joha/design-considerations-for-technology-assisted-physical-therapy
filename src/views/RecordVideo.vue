@@ -1,6 +1,6 @@
 <template>
+  <PatientInfo v-bind:id="id" />
   <div class="container">
-    <PatientInfo v-bind:id="id" />
     <Video v-bind:id="id" />
   </div>
 </template>
@@ -19,3 +19,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 375px;
+}
+</style>

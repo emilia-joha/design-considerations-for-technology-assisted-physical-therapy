@@ -8,7 +8,7 @@
 /**
  * @typedef {Object} JointPerformanceMetric
  * @property {!string} color - can be red, green or yellow
- * @property {!string} jointName - 'neck', 'shoulders', 'elbows', 'hands', 'waist', 'knees', 'ankle', 'feet'
+ * @property {!string} jointName - 'neck', 'shoulders', 'elbows', 'hands', 'waist', 'knees', 'ankle'
  */
 
 /**

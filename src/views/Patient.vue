@@ -1,6 +1,6 @@
 <template>
+  <PatientInfo v-bind:id="id" />
   <div class="container">
-    <PatientInfo v-bind:id="id" />
     <VideoPlayer v-bind:id="id" v-if="done" v-bind:exercise="exercise" />
     <Skeleton v-bind:id="id" v-if="done" v-bind:exercise="exercise" />
     <Notes
@@ -47,3 +47,12 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 375px;
+}
+</style>

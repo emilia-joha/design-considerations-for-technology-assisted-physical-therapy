@@ -1,11 +1,13 @@
 <template>
   <div class="chartContainer">
     <div class="btnContainer">
-      <button id="backwardInTime" @click="handleBackward()">&#10096;</button>
+      <button id="backwardInTime" @click="handleBackward()">&#10092;</button>
     </div>
-    <canvas id="patientHistoryChart"></canvas>
+    <div id="canvas">
+      <canvas id="patientHistoryChart"></canvas>
+    </div>
     <div class="btnContainer">
-      <button id="forwardInTime" @click="handleForward()">&#10097;</button>
+      <button id="forwardInTime" @click="handleForward()">&#10093;</button>
     </div>
   </div>
 </template>
@@ -50,12 +52,12 @@ export default {
     handleBackward() {
       document.getElementById("forwardInTime").style.display = "block";
       const listLength = this.patientExercises.length;
-      if (this.index < listLength - 4) {
+      if (this.index < listLength - 3) {
         this.index++;
         this.patientHistoryChart.destroy();
         this.historyChart();
       }
-      if (this.index == listLength - 4) {
+      if (this.index == listLength - 3) {
         document.getElementById("backwardInTime").style.display = "none";
       }
     },
@@ -68,7 +70,7 @@ export default {
         data: {
           datasets: [
             {
-              borderColor: "#000000",
+              borderColor: data.map((row) => row.color),
               backgroundColor: data.map((row) => row.color),
               data: data.map((row) => row.step),
               hoverRadius: "10",
@@ -161,7 +163,7 @@ export default {
       }
       let exerciseSplitList = newExerciseList
         .reverse()
-        .slice(this.index, this.index + 4);
+        .slice(this.index, this.index + 3);
 
       return exerciseSplitList.reverse();
     },
@@ -176,10 +178,19 @@ export default {
 </script>
 <style scoped>
 .chartContainer {
-  padding: 35px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 15px 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 300px;
+  box-shadow: 0 0 10px 0 #000000;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+#canvas {
+  width: 80%;
 }
 #backwardInTime,
 #forwardInTime {
@@ -189,12 +200,13 @@ export default {
   font-size: 35px;
   margin: 10px;
   padding: 0;
+  font-weight: bolder;
 }
 #forwardInTime {
   display: none;
 }
 .btnContainer {
-  min-width: 37.42px;
+  min-width: 30.8px;
   display: block;
 }
 </style>

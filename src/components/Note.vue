@@ -10,17 +10,13 @@ export default {
 };
 </script>
 <style scoped>
-.note {
-  margin: 10px;
-  padding: 10px;
-  border: solid black 1px;
-  width: 300px;
-}
 .date {
   font-size: 12px;
+
   text-align: right;
 }
 .text {
   font-size: 14px;
+  margin: 0;
 }
 </style>
