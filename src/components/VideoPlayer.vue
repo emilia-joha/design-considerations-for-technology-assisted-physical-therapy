@@ -8,6 +8,7 @@
         class="video-js vjs-default-skin"
       ></video>
       <div id="videoMenue">
+        <div id="empty"></div>
         <button type="button" @click.prevent="play()" id="btnPlay">
           <div>
             <img src="@/assets/play-button.png" />
@@ -57,7 +58,6 @@ export default {
 
         this.player = videojs(this.$refs.video, {
           autoplay: false,
-          fluid: true,
           controls: false,
           bigPlayButton: false,
           height: 470,
@@ -138,6 +138,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#empty {
+  width: 50px;
+  margin: 10px;
 }
 #btnDelete img {
   width: 30px;
