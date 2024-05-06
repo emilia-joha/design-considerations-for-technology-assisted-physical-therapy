@@ -1,20 +1,34 @@
 <template>
   <div id="videoContainer">
-    <div id="video">
+    <div id="video" v-if="isVideo">
       <video
-        ref="video"
+        ref="myVideo"
         id="myVideo"
         playsinline
         class="video-js vjs-default-skin"
       ></video>
+      <div id="time">
+        {{ display }}
+        <div>{{ " " }}/{{ allTime }}</div>
+      </div>
       <div id="videoMenue">
         <div id="empty"></div>
-        <button type="button" @click.prevent="play()" id="btnPlay">
+        <button
+          type="button"
+          @click.prevent="play()"
+          id="btnPlay"
+          v-if="!isPlaying"
+        >
           <div>
             <img src="@/assets/play-button.png" />
           </div>
         </button>
-        <button type="button" @click.prevent="pause()" id="btnPause">
+        <button
+          type="button"
+          @click.prevent="pause()"
+          id="btnPause"
+          v-if="isPlaying"
+        >
           <div>
             <img src="@/assets/pause.png" />
           </div>
@@ -39,10 +53,29 @@ export default {
   data() {
     return {
       player: "",
+      isPlaying: false,
+      isVideo: Boolean(this.exercise?.video?.videoId) || false,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+      timer: 0,
+      allTime: "",
     };
   },
+  computed: {
+    display() {
+      return (
+        this.formatTime(this.hours) +
+        ":" +
+        this.formatTime(this.minutes) +
+        ":" +
+        this.formatTime(this.seconds)
+      );
+    },
+  },
   mounted() {
-    this.getVideoData();
+    if (this.isVideo) this.getVideoData();
   },
   unmounted() {
     if (this.player) {
@@ -51,12 +84,9 @@ export default {
   },
   methods: {
     getVideoData() {
-      if (this.exercise.videoId != "") {
-        document.getElementById("video").style.display = "block";
-        document.getElementById("btnPlay").style.display = "block";
-        document.getElementById("btnDelete").style.display = "block";
-
-        this.player = videojs(this.$refs.video, {
+      console.log("hej");
+      if (this.isVideo) {
+        this.player = videojs(this.$refs.myVideo, {
           autoplay: false,
           controls: false,
           bigPlayButton: false,
@@ -64,29 +94,80 @@ export default {
           width: 300,
           sources: [
             {
-              src: this.exercise.videoId,
+              src: URL.createObjectURL(this.exercise.video.blob),
               type: "video/webm",
             },
           ],
         });
+        console.log("då");
+
+        this.allTime = this.exercise.video.time;
       }
     },
     async deleteVideoData() {
       api.changeVideoId(this.id, this.exercise.startTimestamp, "");
     },
     play() {
-      document.getElementById("btnPlay").style.display = "none";
-      document.getElementById("btnPause").style.display = "block";
       this.player.play();
+      this.isplaying = true;
+      this.allTime = 0;
+      this.stopWatch(true);
     },
     pause() {
-      document.getElementById("btnPlay").style.display = "block";
-      document.getElementById("btnPause").style.display = "none";
       this.player.pause();
+
+      this.isPlaying = false;
+
+      this.allTime =
+        this.formatTime(this.hours) +
+        ":" +
+        this.formatTime(this.minutes) +
+        ":" +
+        this.formatTime(this.seconds);
+
+      this.stopWatch(false);
     },
     deleteRecord() {
       this.deleteVideoData();
-      document.getElementById("video").style.display = "none";
+      this.isVideo = false;
+    },
+    stopWatch(start) {
+      if (start) {
+        this.reset();
+        this.timer = setInterval(this.updateTimer, 1000);
+      } else {
+        clearInterval(this.timer);
+      }
+    },
+    reset() {
+      clearInterval(this.timer);
+      this.milliseconds = 0;
+      this.seconds = 0;
+      this.minutes = 0;
+      this.hours = 0;
+    },
+    updateTimer() {
+      if (this.isReplaying && this.allTime == this.display) {
+        this.stopWatch();
+        return;
+      }
+
+      this.milliseconds += 1000;
+      if (this.milliseconds >= 1000) {
+        this.seconds++;
+        this.milliseconds -= 1000;
+        if (this.seconds === 60) {
+          this.seconds = 0;
+          this.minutes++;
+          if (this.minutes === 60) {
+            this.minutes = 0;
+            this.hours++;
+          }
+        }
+      }
+    },
+    formatTime(time) {
+      return time < 10 ? "0" + time : time;
     },
   },
 };
@@ -103,7 +184,6 @@ export default {
 }
 #video {
   width: 300px;
-  display: none;
 }
 #myVideo {
   width: 100%;
@@ -114,14 +194,17 @@ export default {
 .video-js {
   padding: 0;
 }
-#btnPause {
-  display: none;
-}
 #videoMenue {
   display: flex;
   justify-content: center;
   background-color: #5ba9af;
   border-radius: 0 0 15px 15px;
+}
+#time {
+  background-color: #36686b;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
 #videoMenue button {
   margin: 10px;
@@ -131,7 +214,6 @@ export default {
   border: none;
   font-size: 50px;
   cursor: pointer;
-  display: none;
 }
 #videoMenue img {
   width: 50px;

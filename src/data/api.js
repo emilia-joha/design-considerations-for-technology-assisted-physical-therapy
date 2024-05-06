@@ -30,7 +30,7 @@ export default {
     return exercise;
   },
 
-  async changeVideoId(patientId, startTimestamp, newVideoId) {
+  async changeVideoId(patientId, startTimestamp, str) {
     const exerciseSessions = data.exerciseSessions.filter(
       (x) => x.patientId === patientId
     );
@@ -38,7 +38,9 @@ export default {
     for (const session of exerciseSessions) {
       for (const exercise of session.exercises) {
         if (exercise.startTimestamp == startTimestamp) {
-          exercise.videoId = newVideoId;
+          exercise.video.videoId = str;
+          exercise.video.blob = str;
+          exercise.video.time = str;
           return;
         }
       }
@@ -58,7 +60,7 @@ export default {
       }
     }
   },
-  async postExerciseSession(id, video, date) {
+  async postExerciseSession(id, video, date, time) {
     const sessionId = data.exerciseSessions
       .filter(({ patientId }) => patientId === id)
       .pop()
@@ -76,7 +78,11 @@ export default {
           startTimestamp: date,
           endTimestamp: date,
           type: "singleLeggedSquat",
-          videoId: video,
+          video: {
+            videoId: "1",
+            blob: video,
+            time: time,
+          },
           notes: [],
           performanceMetrics: {
             color: "yellow",

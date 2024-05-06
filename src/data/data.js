@@ -19,7 +19,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-01T12:00:00",
         endTimestamp: "2023-12-01T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -106,7 +110,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-02T12:00:00",
         endTimestamp: "2023-12-02T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -193,7 +201,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-03T12:00:00",
         endTimestamp: "2023-12-03T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -280,7 +292,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-04T12:00:00",
         endTimestamp: "2023-12-04T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -367,7 +383,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-05T12:00:00",
         endTimestamp: "2023-12-05T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -454,7 +474,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-06T12:00:00",
         endTimestamp: "2023-12-06T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -541,7 +565,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-07T12:00:00",
         endTimestamp: "2023-12-07T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -624,7 +652,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-08T12:00:00",
         endTimestamp: "2023-12-08T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "patient had an issue",
@@ -711,7 +743,11 @@ const exerciseSessions = [
         startTimestamp: "2023-12-09T12:00:00",
         endTimestamp: "2023-12-09T12:30:00",
         type: "singleLeggedSquat",
-        videoId: "",
+        video: {
+          videoId: "",
+          blob: "",
+          time: "",
+        },
         notes: [
           {
             note: "Integer bibendum euismod est. Ut fermentum tincidunt hendrerit. Donec eu elementum sem. Nulla facilisi. Ut finibus ultricies auctor. Praesent eu leo egestas, eleifend dui porttitor, bibendum massa.",

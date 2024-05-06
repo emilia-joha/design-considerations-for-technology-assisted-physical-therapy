@@ -7,6 +7,10 @@
         playsinline
         class="video-js vjs-default-skin"
       ></video>
+      <div id="time">
+        {{ display }}
+        <div v-if="allTime && isReplaying">{{ " " }}/{{ allTime }}</div>
+      </div>
       <div id="videoMenue">
         <button
           type="button"
@@ -18,12 +22,22 @@
             <img src="@/assets/replay.png" />
           </div>
         </button>
-        <button type="button" @click.prevent="startRecording()" id="btnStart">
+        <button
+          type="button"
+          @click.prevent="startRecording()"
+          id="btnStart"
+          v-if="!isRecording"
+        >
           <div>
             <img src="@/assets/play-button.png" />
           </div>
         </button>
-        <button type="button" @click.prevent="stopRecording()" id="btnStop">
+        <button
+          type="button"
+          @click.prevent="stopRecording()"
+          id="btnStop"
+          v-if="isRecording"
+        >
           <div>
             <img src="@/assets/stop-button.png" />
           </div>
@@ -61,7 +75,26 @@ export default {
       player: "",
       isSaveDisabled: true,
       isReplayDisabled: true,
+      isReplaying: false,
+      isRecording: false,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+      timer: 0,
+      allTime: 0,
     };
+  },
+  computed: {
+    display() {
+      return (
+        this.formatTime(this.hours) +
+        ":" +
+        this.formatTime(this.minutes) +
+        ":" +
+        this.formatTime(this.seconds)
+      );
+    },
   },
   unmounted() {
     videojs("myVideo").dispose();
@@ -89,7 +122,6 @@ export default {
         },
         plugins: {
           record: {
-            maxLength: 180,
             audio: false,
             video: true,
             debug: false,
@@ -101,31 +133,82 @@ export default {
     },
     startRecording() {
       this.player.record().getDevice();
-      document.getElementById("btnStart").style.display = "none";
-      document.getElementById("btnStop").style.display = "block";
+      this.isRecording = true;
+      this.isReplayDisabled = true;
+      this.isReplaying = false;
+      this.allTime = 0;
+      this.stopWatch(true);
     },
     stopRecording() {
       this.isSaveDisabled = false;
       this.isReplayDisabled = false;
       this.player.record().stopDevice();
-      document.getElementById("btnStart").style.display = "block";
-      document.getElementById("btnStop").style.display = "none";
+      this.isRecording = false;
+
+      this.allTime =
+        this.formatTime(this.hours) +
+        ":" +
+        this.formatTime(this.minutes) +
+        ":" +
+        this.formatTime(this.seconds);
+
+      this.stopWatch(false);
     },
     replayRecording() {
+      this.isReplaying = true;
       const data = (this.src = URL.createObjectURL(this.player.recordedData));
       this.player.src = data;
       this.player.play();
+      this.stopWatch(true);
     },
     submitVideo() {
       this.isSaveDisabled = true;
-      const recordData = URL.createObjectURL(this.player.recordedData);
+      const recordData = this.player.recordedData;
       const date = new Date().toISOString();
-      api.postExerciseSession(this.id, recordData, date);
+      api.postExerciseSession(this.id, recordData, date, this.allTime);
       this.changeView(date);
     },
     changeView(date) {
       date = date.slice(2, 10);
       this.$router.push(`/Patient/${this.id}/${date}`);
+    },
+    stopWatch(start) {
+      if (start) {
+        this.reset();
+        this.timer = setInterval(this.updateTimer, 1000);
+      } else {
+        clearInterval(this.timer);
+      }
+    },
+    reset() {
+      clearInterval(this.timer);
+      this.milliseconds = 0;
+      this.seconds = 0;
+      this.minutes = 0;
+      this.hours = 0;
+    },
+    updateTimer() {
+      if (this.isReplaying && this.allTime == this.display) {
+        this.stopWatch();
+        return;
+      }
+
+      this.milliseconds += 1000;
+      if (this.milliseconds >= 1000) {
+        this.seconds++;
+        this.milliseconds -= 1000;
+        if (this.seconds === 60) {
+          this.seconds = 0;
+          this.minutes++;
+          if (this.minutes === 60) {
+            this.minutes = 0;
+            this.hours++;
+          }
+        }
+      }
+    },
+    formatTime(time) {
+      return time < 10 ? "0" + time : time;
     },
   },
 };
@@ -148,9 +231,13 @@ export default {
   width: 100%;
   border-radius: 15px 15px 0 0;
 }
-#btnStop {
-  display: none;
+#time {
+  background-color: #36686b;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
+
 #videoMenue {
   display: flex;
   justify-content: center;

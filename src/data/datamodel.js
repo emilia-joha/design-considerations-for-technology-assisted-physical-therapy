@@ -24,9 +24,15 @@
  * @property {string} startTimestamp - ISO 8601 date and time
  * @property {string} endTimestamp - ISO 8601 date and time
  * @property {!string} type - type of exercise, can be "singleLeggedSquat"
- * @property {?string} videoId - id of the video associated with the exercise
+ * @property {?VideoObject} Video - id of the video associated with the exercise
  * @property {?SingleLeggedSquatPerformanceMetrics} performanceMetrics - object containing metrics about the quality of the exercise
  * @property {?Array<Notes>} notes
+ */
+/**
+ * @typedef {Object} VideoObject
+ * @property {string} videoId - id of the video associated with the exercise
+ * @property {string} blob - video blob
+ * @property {string} time - video all time
  */
 /**
  * @typedef {Object} Notes
