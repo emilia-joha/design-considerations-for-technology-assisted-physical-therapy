@@ -1,6 +1,6 @@
 <template>
-  <div id="videoContainer">
-    <div id="video" v-if="isVideo">
+  <div id="videoContainer" v-if="isVideo">
+    <div id="video">
       <video
         ref="myVideo"
         id="myVideo"
@@ -47,6 +47,7 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import "videojs-record/dist/css/videojs.record.css";
 import api from "@/data/api.js";
+import Swal from "sweetalert2";
 
 export default {
   props: ["id", "exercise"],
@@ -84,7 +85,6 @@ export default {
   },
   methods: {
     getVideoData() {
-      console.log("hej");
       if (this.isVideo) {
         this.player = videojs(this.$refs.myVideo, {
           autoplay: false,
@@ -99,37 +99,46 @@ export default {
             },
           ],
         });
-        console.log("då");
 
         this.allTime = this.exercise.video.time;
       }
     },
     async deleteVideoData() {
-      api.changeVideoId(this.id, this.exercise.startTimestamp, "");
+      const btnStyle = Swal.mixin({
+        customClass: {
+          popup: "pupupContainer",
+          confirmButton: "confirmBtn",
+          cancelButton: "cancelBtn",
+        },
+      });
+      btnStyle
+        .fire({
+          text: "Are you sure you want to delete the video?",
+          icon: "warning",
+          iconColor: "#ff003d",
+          showCancelButton: true,
+          confirmButtonText: "YES",
+          cancelButtonText: "CANCEL",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            api.changeVideoId(this.id, this.exercise.startTimestamp, "");
+            this.isVideo = false;
+          }
+        });
     },
     play() {
       this.player.play();
-      this.isplaying = true;
-      this.allTime = 0;
+      this.isPlaying = true;
       this.stopWatch(true);
     },
     pause() {
       this.player.pause();
-
       this.isPlaying = false;
-
-      this.allTime =
-        this.formatTime(this.hours) +
-        ":" +
-        this.formatTime(this.minutes) +
-        ":" +
-        this.formatTime(this.seconds);
-
       this.stopWatch(false);
     },
     deleteRecord() {
       this.deleteVideoData();
-      this.isVideo = false;
     },
     stopWatch(start) {
       if (start) {
@@ -147,8 +156,9 @@ export default {
       this.hours = 0;
     },
     updateTimer() {
-      if (this.isReplaying && this.allTime == this.display) {
+      if (this.isPlaying && this.allTime == this.display) {
         this.stopWatch();
+        this.isPlaying = false;
         return;
       }
 
@@ -232,5 +242,34 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+</style>
+<style>
+.confirmBtn,
+.cancelBtn {
+  background-color: #ff003d !important;
+  border: none !important;
+  font-size: 18px !important;
+  padding: 10px 30px !important;
+  margin: 10px 0 !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 10px 0 #000000 !important;
+  border-radius: 15px !important;
+  width: 200px !important;
+  color: #000000 !important;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+.cancelBtn {
+  background-color: #5ba9af !important;
+}
+.pupupContainer {
+  width: 300px !important;
+  border-radius: 15px !important;
+  color: #000000 !important;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
 }
 </style>

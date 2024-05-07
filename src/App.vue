@@ -14,6 +14,9 @@ export default {
       id: 1,
     };
   },
+  mounted() {
+    this.$router.push(`/PatientHistory/${this.id}`);
+  },
 };
 </script>
 
