@@ -24,7 +24,6 @@ export default {
   components: {
     Note,
   },
-  mounted() {},
   methods: {
     write() {
       document.getElementById("write").style.display = "block";

@@ -33,7 +33,7 @@
             <img src="@/assets/pause.png" />
           </div>
         </button>
-        <button type="button" @click.prevent="deleteRecord()" id="btnDelete">
+        <button type="button" @click="deleteRecord()" id="btnDelete">
           <div>
             <img src="@/assets/recycle-bin.png" />
           </div>
@@ -47,6 +47,7 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 import "videojs-record/dist/css/videojs.record.css";
 import api from "@/data/api.js";
+import { inject, getCurrentInstance } from "vue";
 import Swal from "sweetalert2";
 
 export default {
@@ -83,6 +84,21 @@ export default {
       videojs("myVideo").dispose();
     }
   },
+  setup() {
+    const showPopup = inject("showPopup");
+    const instance = getCurrentInstance();
+
+    const deleteRecord = async () => {
+      const result = await showPopup(
+        "Are you sure you want to delete the video?"
+      );
+      if (result.isConfirmed) {
+        await instance.proxy.deleteVideoData();
+      }
+    };
+
+    return { deleteRecord };
+  },
   methods: {
     getVideoData() {
       if (this.isVideo) {
@@ -104,28 +120,8 @@ export default {
       }
     },
     async deleteVideoData() {
-      const btnStyle = Swal.mixin({
-        customClass: {
-          popup: "pupupContainer",
-          confirmButton: "confirmBtn",
-          cancelButton: "cancelBtn",
-        },
-      });
-      btnStyle
-        .fire({
-          text: "Are you sure you want to delete the video?",
-          icon: "warning",
-          iconColor: "#ff003d",
-          showCancelButton: true,
-          confirmButtonText: "YES",
-          cancelButtonText: "CANCEL",
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            api.changeVideoId(this.id, this.exercise.startTimestamp, "");
-            this.isVideo = false;
-          }
-        });
+      api.changeVideoId(this.id, this.exercise.startTimestamp, "");
+      this.isVideo = false;
     },
     play() {
       this.player.play();
@@ -137,9 +133,7 @@ export default {
       this.isPlaying = false;
       this.stopWatch(false);
     },
-    deleteRecord() {
-      this.deleteVideoData();
-    },
+
     stopWatch(start) {
       if (start) {
         this.reset();
@@ -242,34 +236,5 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-</style>
-<style>
-.confirmBtn,
-.cancelBtn {
-  background-color: #ff003d !important;
-  border: none !important;
-  font-size: 18px !important;
-  padding: 10px 30px !important;
-  margin: 10px 0 !important;
-  cursor: pointer !important;
-  box-shadow: 0 0 10px 0 #000000 !important;
-  border-radius: 15px !important;
-  width: 200px !important;
-  color: #000000 !important;
-  font-family: "Roboto", sans-serif !important;
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-.cancelBtn {
-  background-color: #5ba9af !important;
-}
-.pupupContainer {
-  width: 300px !important;
-  border-radius: 15px !important;
-  color: #000000 !important;
-  font-family: "Roboto", sans-serif !important;
-  font-weight: normal !important;
-  font-style: normal !important;
 }
 </style>
