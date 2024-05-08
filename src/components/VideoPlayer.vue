@@ -48,7 +48,6 @@ import "video.js/dist/video-js.css";
 import "videojs-record/dist/css/videojs.record.css";
 import api from "@/data/api.js";
 import { inject, getCurrentInstance } from "vue";
-import Swal from "sweetalert2";
 
 export default {
   props: ["id", "exercise"],

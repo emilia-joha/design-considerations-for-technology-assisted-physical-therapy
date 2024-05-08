@@ -754,7 +754,7 @@ const exerciseSessions = [
             date: "2023-12-09T12:00:00",
           },
           {
-            note: "Integer bibendum euismod est. Ut fermentum tincidunt hendrerit. Donec eu elementum sem. Nulla facilisi. Ut finibus ultricies auctor. Praesent eu leo egestas, eleifend dui porttitor, bibendum massa.",
+            note: "Integer bibendum euismod jkdhflk lkjdfl est. Ut fermentum tincidunt hendrerit. Donec eu elementum sem. Nulla facilisi. Ut finibus ultricies auctor. Praesent eu leo egestas, eleifend dui porttitor, bibendum massa.",
             date: "2023-12-20T12:00:00",
           },
         ],

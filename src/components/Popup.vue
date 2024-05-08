@@ -1,7 +1,6 @@
 <template></template>
 <script>
 import Swal from "sweetalert2";
-import { ref, onMounted, getCurrentInstance } from "vue";
 
 export default {
   setup() {

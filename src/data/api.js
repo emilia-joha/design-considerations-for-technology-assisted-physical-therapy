@@ -60,6 +60,25 @@ export default {
       }
     }
   },
+  async deleteNote(patientId, startTimestamp, text) {
+    const exerciseSessions = data.exerciseSessions.filter(
+      (x) => x.patientId === patientId
+    );
+
+    for (const session of exerciseSessions) {
+      for (const exercise of session.exercises) {
+        if (exercise.startTimestamp == startTimestamp) {
+          for (const n of exercise.notes) {
+            if (n.note === text.note && n.date.slice(0, 10) === text.date) {
+              const i = exercise.notes.findIndex((n) => n.note === text.note);
+              exercise.notes.splice(i, 1);
+            }
+          }
+          return;
+        }
+      }
+    }
+  },
   async postExerciseSession(id, video, date, time) {
     const sessionId = data.exerciseSessions
       .filter(({ patientId }) => patientId === id)
