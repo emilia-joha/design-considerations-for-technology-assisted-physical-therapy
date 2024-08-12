@@ -2,7 +2,7 @@ const patientDetails = [
   {
     id: "1",
     names: "Emilia Johansson",
-    dateOfBirth: "1993-08-03",
+    dateOfBirth: "2024-05-15",
   },
 ];
 
